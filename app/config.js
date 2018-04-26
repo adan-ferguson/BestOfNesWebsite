@@ -13,8 +13,7 @@ function readOptions(){
 const options = readOptions()
 
 const defaults = {
-  port: 3000,
-  environment: 'production'
+  port: 3000
 }
 
 module.exports = Object.assign(defaults, options)
