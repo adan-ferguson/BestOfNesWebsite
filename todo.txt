@@ -1,0 +1,11 @@
+--- Gulpfile Stuff --
+Empty the compiled folders
+Add anti-cache timestamps
+JS file ordering is off
+CSS injection
+Split begin.js up more
+Make constants file
+Watching
+
+2018-04-29
+------------

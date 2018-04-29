@@ -2,7 +2,7 @@ const log = require('fancy-log')
 const express = require('express')
 const app = express()
   .set('view engine', 'pug')
-  .set('views', './web/views')
+  .set('compiled', './web/compiled')
 
 const config = require('./config.js')
 
