@@ -27,6 +27,6 @@ gulp.task('production', () => {
   begin({mode: 'production'})
 })
 
-gulp.task('default', () => {
+gulp.task('run', () => {
   begin({mode: 'production', startServer: true})
 })
