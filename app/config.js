@@ -1,20 +1,10 @@
-const fs = require('fs')
-const log = require('fancy-log')
-const CONFIG_FILE_PATH = 'config.json'
-
-function readOptions(){
-  try {
-    return JSON.parse(fs.readFileSync(CONFIG_FILE_PATH))
-  } catch(e) {
-    log(e)
-    return {}
-  }
-}
-
-const options = readOptions()
+const options = require('../config.json')
+const packageOptions = require('../package.json')
 
 const defaults = {
-  port: 3000
+  port: 3000,
+  name: packageOptions.name,
+  smallname: packageOptions.name.split(' ').join('').toLowerCase()
 }
 
 module.exports = Object.assign(defaults, options)

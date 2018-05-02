@@ -1,10 +1,11 @@
 --- Gulpfile Stuff --
 Split begin.js up more
-Empty the compiled folders
 Add anti-cache timestamps
 JS file ordering is off
 CSS injection
 Watching
+SSL
 
 --- 2018-04-29 ---
 Make directories constants file
+Empty the compiled folders

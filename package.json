@@ -1,5 +1,5 @@
 {
-  "name": "bestofneswebsite",
+  "name": "Sample Website Name Aaaa",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -10,6 +10,7 @@
     "gulp-inject": "^4.1.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-uglify": "^2.0.0",
+    "npm": "^6.0.0",
     "pug": "^2.0.3",
     "pump": "^3.0.0"
   },
