@@ -1,8 +1,9 @@
 const log = require('fancy-log')
 const express = require('express')
+const directories = require('./directories')
 const app = express()
   .set('view engine', 'pug')
-  .set('compiled', './web/compiled')
+  .set('views', directories.COMPILED.VIEWS)
 
 const config = require('./config.js')
 

@@ -1,5 +1,5 @@
 const path = require('path')
-const dir = process.env.INIT_CWD
+const dir = process.env.INIT_CWD || process.cwd()
 
 module.exports = {
   SOURCES: {
