@@ -1,4 +1,3 @@
-const log = require('fancy-log')
 const pump = require('pump')
 const config = require('../app/config.js')
 
@@ -13,22 +12,26 @@ const minifiedName = config.filename + '.min.js'
 
 function writeJS(gulp, mode){
 
-  const pumpArray = [gulp.src(sourcefiles.getJS(directories.ASSETS + 'js/'))]
+  return new Promise((yay, nay) => {
 
-  if(mode === 'production'){
-    pumpArray.push(concat(minifiedName))
-    pumpArray.push(babel({
-      presets: ['env']
-    }))
-    pumpArray.push(uglify())
-  }
+    const pumpArray = [gulp.src(sourcefiles.getJS(directories.SOURCES.JS))]
 
-  pumpArray.push(gulp.dest(directories.COMPILED_ASSETS + 'js/'))
-
-  pump(pumpArray, e => {
-    if(e){
-      log('PUMP ERROR', e)
+    if(mode === 'production'){
+      pumpArray.push(concat(minifiedName))
+      pumpArray.push(babel({
+        presets: ['env']
+      }))
+      pumpArray.push(uglify())
     }
+
+    pumpArray.push(gulp.dest(directories.COMPILED.JS))
+
+    pump(pumpArray, e => {
+      if(e){
+        nay(e)
+      }
+      yay()
+    })
   })
 }
 

@@ -4,20 +4,26 @@ const directories = require('../app/directories.js')
 
 function cleanupDirectories(){
 
-  cleanup(directories.COMPILED_ASSETS)
-  cleanup(directories.COMPILED_VIEWS)
+  Object.values(directories.COMPILED).forEach(dir => cleanup(dir))
 
   function cleanup(dir){
 
-    let [err, files] = fs.readdirSync(dir)
-
-    if(err){
-      throw err
+    let files
+    try {
+      files = fs.readdirSync(dir)
+    }catch(e){
+      // Probably doesn't exist, move on
+      return
     }
 
     files.forEach(f => {
       let file = path.join(dir, f)
-      fs.lstatSync(file).isDirectory() ? cleanup(file) : fs.unlinkSync(file)
+      if(fs.lstatSync(file).isDirectory()){
+        cleanup(file)
+        fs.rmdirSync(file)
+      }else{
+        fs.unlinkSync(file)
+      }
     })
   }
 }

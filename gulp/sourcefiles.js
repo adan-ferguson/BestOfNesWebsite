@@ -1,4 +1,4 @@
-
+const path = require('path')
 
 module.exports = {
   getJS: (prependDir = '') => {
@@ -7,12 +7,12 @@ module.exports = {
       'index.js',
       '**/index.js',
       '**/*.js',
-    ].map(s => prependDir + s)
+    ].map(s => path.join(prependDir, s))
   },
   getStyles: (prependDir = '') => {
     return [
       '**/*.less',
       '**/*.css'
-    ].map(s => prependDir + s)
+    ].map(s => path.join(prependDir, s))
   }
 }
