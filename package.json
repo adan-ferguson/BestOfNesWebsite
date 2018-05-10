@@ -1,0 +1,24 @@
+{
+  "name": "sample-website-outline",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "express": "~4.15.2",
+    "fancy-log": "^1.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rev": "^8.1.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^5.0.0",
+    "npm": "^6.0.0",
+    "pug": "^2.0.3",
+    "pump": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.6.1",
+    "gulp-babel": "^7.0.1"
+  }
+}
