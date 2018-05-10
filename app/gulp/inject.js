@@ -2,17 +2,19 @@ const path = require('path')
 const inject = require('gulp-inject')
 const directories = require('../directories.js')
 const sourcefiles = require('./sourcefiles.js')
-const config = require('../config.js')
 
 function injectIntoViews(gulp, mode){
 
-  let jsFiles = mode === 'production' ?
-    [path.join(directories.COMPILED.JS, config.productionJS)] :
-    sourcefiles.getJS(directories.COMPILED.JS)
+  let jsFiles
+  let cssFiles
 
-  let cssFiles = mode === 'production' ?
-    [path.join(directories.COMPILED.STYLES, config.productionCSS)] :
-    sourcefiles.getStyles(directories.COMPILED.STYLES)
+  if(mode === 'production'){
+    jsFiles = [path.join(directories.COMPILED.JS, '*.js')]
+    cssFiles = [path.join(directories.COMPILED.STYLES, '*.css')]
+  }else{
+    jsFiles = sourcefiles.getJS(directories.COMPILED.JS)
+    cssFiles = sourcefiles.getStyles(directories.COMPILED.STYLES)
+  }
 
   gulp
     .src(path.join(directories.SOURCES.VIEWS, '**/*.pug'))
