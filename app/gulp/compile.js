@@ -11,7 +11,7 @@ const sourcefiles = require('./sourcefiles.js')
 
 async function writeJS(gulp, mode){
 
-  const pumpArray = [gulp.src(sourcefiles.getJS(directories.SOURCES.JS))]
+  const pumpArray = [gulp.src(sourcefiles.getJS(directories.SOURCES.JS), {base: directories.SOURCES.JS})]
 
   if(mode === 'production'){
     pumpArray.push(concat(config.productionJS))
@@ -28,7 +28,7 @@ async function writeJS(gulp, mode){
 async function writeStyles(gulp, mode){
 
   const pumpArray = [
-    gulp.src(sourcefiles.getStyles(directories.SOURCES.STYLES)),
+    gulp.src(sourcefiles.getStyles(directories.SOURCES.STYLES), {base: directories.SOURCES.STYLES}),
     sass()
   ]
 
