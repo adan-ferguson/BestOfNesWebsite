@@ -12,7 +12,7 @@ function injectIntoViews(gulp, mode){
 
   let cssFiles = mode === 'production' ?
     [path.join(directories.COMPILED.STYLES, config.productionCSS)] :
-    sourcefiles.getJS(directories.COMPILED.STYLES)
+    sourcefiles.getStyles(directories.COMPILED.STYLES)
 
   gulp
     .src(path.join(directories.SOURCES.VIEWS, '**/*.pug'))
