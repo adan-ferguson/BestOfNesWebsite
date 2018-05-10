@@ -1,13 +1,13 @@
 --- Gulpfile Stuff ---
-Production cache busting
 Watching
-SSL
-Rename to generic website name
+Rename  repo to generic website name
+HTTPS/SSL
 
 --- 2018-05-10 ---
 JS file ordering is off
 SASS compilation
 CSS injection
+Production cache busting
 
 --- 2018-05-05 ---
 Split begin.js up more
