@@ -11,8 +11,7 @@ module.exports = {
   },
   getStyles: (prependDir = '') => {
     return [
-      '**/*.less',
-      '**/*.css'
+      '**/*.sass'
     ].map(s => path.join(prependDir, s))
   }
 }

@@ -1,18 +1,22 @@
 const path = require('path')
 const inject = require('gulp-inject')
-const directories = require('../app/directories.js')
+const directories = require('../directories.js')
 const sourcefiles = require('./sourcefiles.js')
-const minifiedName = require('../app/config.js').filename + '.min.js'
+const config = require('../config.js')
 
 function injectIntoViews(gulp, mode){
 
   let jsFiles = mode === 'production' ?
-    [path.join(directories.COMPILED.JS, minifiedName)] :
+    [path.join(directories.COMPILED.JS, config.productionJS)] :
     sourcefiles.getJS(directories.COMPILED.JS)
+
+  let cssFiles = mode === 'production' ?
+    [path.join(directories.COMPILED.STYLES, config.productionCSS)] :
+    sourcefiles.getJS(directories.COMPILED.STYLES)
 
   gulp
     .src(path.join(directories.SOURCES.VIEWS, '**/*.pug'))
-    .pipe(inject(gulp.src(jsFiles, {read: false})))
+    .pipe(inject(gulp.src(jsFiles.concat(cssFiles), {read: false})))
     .pipe(gulp.dest(directories.COMPILED.VIEWS))
 }
 

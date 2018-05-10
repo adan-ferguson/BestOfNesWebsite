@@ -1,11 +1,17 @@
---- Gulpfile Stuff --
-Split begin.js up more
-Add anti-cache timestamps
+--- Gulpfile Stuff ---
 JS file ordering is off
-CSS injection
+Add anti-cache timestamps
 Watching
 SSL
 Rename to generic website name
+
+--- 2018-05-10 ---
+SASS compilation
+CSS injection
+
+
+--- 2018-05-05 ---
+Split begin.js up more
 
 --- 2018-04-29 ---
 Make directories constants file

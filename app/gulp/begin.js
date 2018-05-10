@@ -7,7 +7,7 @@ module.exports = async (gulp, options) => {
 
   cleanup()
   await compile.writeJS(gulp, options.mode)
-  //await compile.writeStyles(gulp, options.mode)
+  await compile.writeStyles(gulp, options.mode)
   inject(gulp, options.mode)
 
   if(options.startServer){

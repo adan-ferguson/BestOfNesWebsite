@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const directories = require('../app/directories.js')
+const directories = require('../directories.js')
 
 function cleanupDirectories(){
 

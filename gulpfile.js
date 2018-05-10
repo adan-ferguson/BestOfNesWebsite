@@ -1,5 +1,5 @@
 const gulp = require('gulp')
-const begin = require('./gulp/begin.js')
+const begin = require('./app/gulp/begin.js')
 
 gulp.task('development', () => {
   begin(gulp, {mode: 'development'})
