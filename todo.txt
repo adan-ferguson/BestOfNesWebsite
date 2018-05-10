@@ -1,13 +1,23 @@
---- Gulpfile Stuff ---
-Watching
-Rename  repo to generic website name
-HTTPS/SSL
+--- Repo ---
+Fork into bestofnes one
 
+--- Server ---
+HTTPS/SSL
+MongoDB
+Public route
+Admin route
+Default route
+
+
+============================================================
 --- 2018-05-10 ---
 JS file ordering is off
 SASS compilation
 CSS injection
 Production cache busting
+Watching
+Rename to generic name
+Add a readme
 
 --- 2018-05-05 ---
 Split begin.js up more
