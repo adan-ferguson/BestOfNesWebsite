@@ -1,19 +1,15 @@
 --- Server ---
-Static Folder
-Routing
-Public routes
-Admin routes
-
-
-
+Header
 MongoDB
-
 HTTPS/SSL
-
 
 ============================================================
 --- 2018-05-12 ---
 Fork into bestofnes one
+Static Folder
+Routing
+Public router
+Admin router
 
 --- 2018-05-10 ---
 JS file ordering is off

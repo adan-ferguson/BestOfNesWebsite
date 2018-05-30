@@ -11,4 +11,6 @@ const app = express()
   .use('/', require('./routes/public.js'))
   .use('/admin', require('./routes/admin.js'))
 
+const db = require('./db.js')
+
 app.listen(config.port, () => log(`Listening on port ${config.port}.`))
