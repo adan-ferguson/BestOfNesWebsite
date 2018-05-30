@@ -4,7 +4,7 @@ const packageOptions = require('../package.json')
 const defaults = {
   port: 3000,
   db: {
-    port: 27127,
+    port: 27017,
     name: 'bestofnes'
   },
   name: packageOptions.name

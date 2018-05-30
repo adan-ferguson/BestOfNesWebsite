@@ -1,13 +1,17 @@
 const MongoClient = require('mongodb').MongoClient
 const config = require('./config.js')
+const log = require('fancy-log')
 
-const db = {}
+let db = {
+  connection: null
+}
 
-MongoClient.connect(`mongodb://localhost:${config.db.port}/${config.db.name}`, function(err, db) {
-  if (err) {
-    throw err
-  }
-  db.close()
-})
+async function connect(){
+  let client = await MongoClient.connect(`mongodb://localhost:${config.db.port}`, { useNewUrlParser: true })
+  db.connection = client.db(config.db.name)
+  log('Connected to DB')
+}
+
+connect()
 
 module.exports = db
