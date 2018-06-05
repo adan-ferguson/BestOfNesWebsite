@@ -1,9 +1,13 @@
 --- Server ---
+Twitch API
+Link admin page credentials with twitch API
 Header
-MongoDB
 HTTPS/SSL
 
 ============================================================
+--- 2018-05-29 ---
+MongoDB
+
 --- 2018-05-12 ---
 Fork into bestofnes one
 Static Folder

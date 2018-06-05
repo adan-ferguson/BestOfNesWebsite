@@ -7,7 +7,11 @@ const defaults = {
     port: 27017,
     name: 'bestofnes'
   },
-  name: packageOptions.name
+  name: packageOptions.name,
+  twitch: {
+    clientID: null,
+    clientSecret: null
+  }
 }
 
 module.exports = Object.assign(defaults, options)
