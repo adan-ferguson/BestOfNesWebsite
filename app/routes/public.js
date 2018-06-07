@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/twitchredirect', (req, res) => {
-  res.render('twitchredirect', {title: 'Hey', message: 'Route message'})
+  res.render('twitchredirect')
 })
 
 module.exports = router

@@ -21,7 +21,7 @@ module.exports = {
     let obj = {
       client_id: config.twitch.clientID,
       redirect_uri: config.twitch.redirectURI,
-      response_type: 'token',
+      response_type: 'token id_token',
       scope: 'openid'
     }
 

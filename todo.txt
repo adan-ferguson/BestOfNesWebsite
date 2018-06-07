@@ -1,10 +1,18 @@
+--- Admin Page ---
+Authenticate based on Twitch account
+store auth code in local storage, show button if not valid/doesn't exist
+redirect to admin page if valid
+cross-domain state check
+
 --- Server ---
-Twitch API
-Link admin page credentials with twitch API
+Reload server after edit
 Header
 HTTPS/SSL
 
 ============================================================
+--- 2018-06-05 ---
+Twitch API include, admin login
+
 --- 2018-05-29 ---
 MongoDB
 
