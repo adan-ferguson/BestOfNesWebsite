@@ -9,4 +9,11 @@ router.get('/', async (req, res) => {
   })
 })
 
+router.post('/checkAccessToken', async (req, res) => {
+  console.log('checking access token: ', req.headers['access-token'])
+  res.send({
+    valid: false
+  })
+})
+
 module.exports = router

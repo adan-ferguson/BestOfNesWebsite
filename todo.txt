@@ -1,15 +1,21 @@
 --- Admin Page ---
-Authenticate based on Twitch account
-store auth code in local storage, show button if not valid/doesn't exist
-redirect to admin page if valid
-cross-domain state check
+server-side auth token check to see if admin page available
+show message if unauthorized
+cross-domain state check variable
+admin dashboard route should require authorized token
 
 --- Server ---
 Reload server after edit
 Header
 HTTPS/SSL
+CSS mimetype issue
 
 ============================================================
+--- 2018-06-07 ---
+store auth code in local storage
+redirect if authorized
+send auth token to server to check
+
 --- 2018-06-05 ---
 Twitch API include, admin login
 

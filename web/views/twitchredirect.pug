@@ -2,6 +2,6 @@ extends templates/main.pug
 
 block content
     | Redirecting...
-
-script
-    window.BestOfNes.Twitch.handleRedirect()
+block postscript
+    script.
+        window.BestOfNes.Twitch.handleLogin()
