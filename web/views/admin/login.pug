@@ -6,4 +6,6 @@ block content
     a(href=twitchLoginLink) Connect With Twitch!
 block postscript
     script.
-      window.BestOfNes.Twitch.checkAdminLogin()
+        localStorage.stateGuid = '#{stateID}'
+        localStorage.redirectTarget = '/admin'
+        window.BestOfNes.Twitch.checkAdminLogin()

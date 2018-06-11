@@ -4,12 +4,12 @@
 
   // User logged in with twitch, parse the query string and save the user's
   // access token in local storage, then redirect to the page it was at before.
-  Twitch.handleLogin = function(){
+  Twitch.handleLogin = async function(){
 
     let params = BestOfNes.Utils.parseHash()
     let redirectTarget = localStorage.redirectTarget || '/'
 
-    if(localStorage.state && params.state === localStorage.stateGuid){
+    if(localStorage.stateGuid && params.state === localStorage.stateGuid){
       localStorage.removeItem('stateGuid')
       localStorage.removeItem('redirectTarget')
       localStorage.accessToken = params.access_token
@@ -30,13 +30,14 @@
 
     let response = await fetch('/admin/checkAccessToken', {
       method: 'post',
-      headers: headers
+      headers: headers,
+      credentials: 'include'
     })
 
     let data = await response.json()
 
     if(data.valid){
-      window.location = '/admin/dashboard'
+      window.location = '/admin'
     }
   }
 

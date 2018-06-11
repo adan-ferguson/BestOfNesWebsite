@@ -1,19 +1,54 @@
 const express = require('express')
 const router = express.Router()
 const twitch = require('../twitch.js')
+const config = require('../config.js')
+const guid = require('uuid/v4')
 
 router.get('/', async (req, res) => {
-  res.render('admin/index', {
-    title: 'Admin',
-    twitchLoginLink: twitch.getLoginLink()
+
+  let user = req.session.username
+
+  if(!user){
+
+    let id = guid()
+
+    return res.render('admin/login', {
+      title: 'Admin Login',
+      twitchLoginLink: twitch.getLoginLink(id),
+      stateID: id
+    })
+  }
+
+  if(!userHasAdminCredentials(user)){
+    return res.sendStatus(404)
+  }
+
+  return res.render('admin/dashboard', {
+    title: 'Admin Dashboard'
   })
 })
 
 router.post('/checkAccessToken', async (req, res) => {
-  console.log('checking access token: ', req.headers['access-token'])
+
+  let username = await twitch.getUsernameFromAccessToken(req.headers['access-token'])
+  let valid = userHasAdminCredentials(username)
+
+  if(valid){
+    req.session.username = username
+  }
+
   res.send({
-    valid: false
+    valid: valid
   })
 })
+
+function userHasAdminCredentials(username){
+
+  if(!username){
+    return false
+  }
+
+  return config.accounts.admins.indexOf(username) > -1
+}
 
 module.exports = router

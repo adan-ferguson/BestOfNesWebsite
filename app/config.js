@@ -15,7 +15,8 @@ const defaults = {
   twitch: {
     clientID: null,
     clientSecret: null
-  }
+  },
+  requireHttps: false
 }
 
 module.exports = Object.assign(defaults, options)
