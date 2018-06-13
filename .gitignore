@@ -2,3 +2,5 @@
 node_modules
 public/compiled
 compiled
+db/data
+config.json

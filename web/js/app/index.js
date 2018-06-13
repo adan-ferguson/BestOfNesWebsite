@@ -1,1 +1,1 @@
-let z = 333
+window.BestOfNes = {}
