@@ -1,7 +1,6 @@
 const cleanup = require('./cleanup.js')
 const compile = require('./compile.js')
 const inject = require('./inject.js')
-const startserver = require('./startserver.js')
 const log = require('fancy-log')
 
 const watch = require('gulp-watch')
@@ -12,10 +11,6 @@ module.exports = async (gulp, options) => {
   await compile.writeJS(gulp, options.mode)
   await compile.writeStyles(gulp, options.mode)
   inject(gulp, options.mode)
-
-  if(options.startServer){
-    startserver()
-  }
 
   watch(['web/js/**/*'], {events: ['change']}, () => {
     compile.writeJS(gulp, options.mode)

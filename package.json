@@ -19,11 +19,13 @@
     "pump": "^3.0.0",
     "request": "^2.87.0",
     "request-promise-native": "^1.0.5",
-    "uuid": "^3.2.1"
-  },
-  "devDependencies": {
+    "uuid": "^3.2.1",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.6.1",
     "gulp-babel": "^7.0.1"
+  },
+  "scripts": {
+    "startdb": "mongod --dbpath db/data",
+    "startserver": "forever start app/server.js"
   }
 }
