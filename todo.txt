@@ -1,49 +1,19 @@
---- DOING ---
-
---- DB ---
-Figure out data needed
-- Events
-- Games
-- Results
-- Users
-
---- Admin ---
-- Add/edit events
-- Add/edit games
-
---- Public ---
-- Show stream on homepage if it's up
-- Events pages
-
 --- Server ---
-Header
-HTTPS/SSL
-CSS mimetype issue
-
-============================================================
---- 2018-06-10 ---
-cross-domain state check variable
-server-side auth token check to see if admin page available
-reroute to home page if unauthorized
-admin dashboard route should require authorized token
-
---- 2018-06-07 ---
-store auth code in local storage
-redirect if authorized
-send auth token to server to check
-
---- 2018-06-05 ---
-Twitch API include, admin login
-
---- 2018-05-29 ---
-MongoDB
-
---- 2018-05-12 ---
-Fork into bestofnes one
 Static Folder
 Routing
-Public router
-Admin router
+Public routes
+Admin routes
+
+
+
+MongoDB
+
+HTTPS/SSL
+
+
+============================================================
+--- 2018-05-12 ---
+Fork into bestofnes one
 
 --- 2018-05-10 ---
 JS file ordering is off
