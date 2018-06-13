@@ -9,9 +9,6 @@
     "sourceType": "module",
     "ecmaVersion": 2017
   },
-  "globals": {
-    "BestOfNes": true
-  },
   "rules": {
     "indent": [
       "error",
