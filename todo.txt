@@ -1,4 +1,5 @@
 --- DOING ---
+DB configuration, basic admin page
 
 --- DB ---
 Figure out data needed
@@ -21,6 +22,9 @@ HTTPS/SSL
 CSS mimetype issue
 
 ============================================================
+--- 2018-06-12 ---
+DB setup stuff
+
 --- 2018-06-10 ---
 cross-domain state check variable
 server-side auth token check to see if admin page available
