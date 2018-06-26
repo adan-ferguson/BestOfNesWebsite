@@ -1,0 +1,27 @@
+extends ../templates/main.pug
+
+block content
+    form#edit-race.container
+        .info
+            .form-group
+                label Name
+                input.form-control(name="name" type="text" placeholder="Enter event name here")
+            .form-group
+                label Date
+                input.date-input.form-control(name="date" type="text" placeholder="Event date")
+            .form-group
+                label Visible to Public
+                input.form-control(name="public" type="checkbox")
+                small.font-text.text-muted Don't check this until you're ready for everyone to see it.
+            .form-group
+                label Finished
+                input.form-control(name="finished" type="checkbox")
+                small.font-text.text-muted Check this once the race is f
+        .games
+            | games
+        .participants
+            | participants
+        button(type="submit") Save
+block postscript
+    script.
+      window.BestOfNes.Admin.handleSaveRace()

@@ -1,5 +1,5 @@
 --- DOING ---
-DB configuration, basic admin page
+Create/edit race
 
 Figure out data needed
 - Events
@@ -28,6 +28,9 @@ HTTPS/SSL
 CSS mimetype issue
 
 ============================================================
+--- 2018-06-28 ---
+DB configuration, basic admin page
+
 --- 2018-06-12 ---
 DB setup stuff
 
