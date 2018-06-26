@@ -3,9 +3,14 @@ extends ../templates/main.pug
 block content
     div.races
         | Races
+        a(href="admin/races/new")
+            | Create new
         div.upcoming
             each race in races.upcoming
                 a= race.name
         div.old
             each race in races.old
                 a= race.name
+block postscript
+    script.
+      window.BestOfNes.Twitch.handleLogin()

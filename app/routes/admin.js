@@ -10,7 +10,7 @@ async function checkCredentials(req, res, next){
   let user = req.session.username
 
   if(req.method === 'GET' && !user){
-    res.redirect('admin/login')
+    res.redirect('/admin/login')
   }else if(req.method === 'POST' && !user){
     res.send(404)
   }else if(!userHasAdminCredentials(user)){
@@ -33,6 +33,20 @@ router.get('/', checkCredentials, async (req, res) => {
   return res.render('admin/dashboard', {
     title: 'Admin Dashboard',
     races: await races.list()
+  })
+})
+
+router.get('/races/:id', checkCredentials, async (req, res) => {
+
+  let race = await races.get(req.params.id)
+
+  if(!race){
+    return res.send(404)
+  }
+
+  return res.render('admin/race', {
+    title: 'Admin - Edit Race',
+    race: race
   })
 })
 
