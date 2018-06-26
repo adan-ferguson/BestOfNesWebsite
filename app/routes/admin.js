@@ -3,6 +3,7 @@ const router = express.Router()
 const twitch = require('../twitch.js')
 const config = require('../config.js')
 const guid = require('uuid/v4')
+const races = require('../models/races.js')
 
 async function checkCredentials(req, res, next){
 
@@ -30,7 +31,8 @@ function userHasAdminCredentials(username){
 
 router.get('/', checkCredentials, async (req, res) => {
   return res.render('admin/dashboard', {
-    title: 'Admin Dashboard'
+    title: 'Admin Dashboard',
+    races: await races.list()
   })
 })
 

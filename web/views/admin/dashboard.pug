@@ -1,4 +1,11 @@
 extends ../templates/main.pug
 
 block content
-    | Welcome to dashboard
+    div.races
+        | Races
+        div.upcoming
+            each race in races.upcoming
+                a= race.name
+        div.old
+            each race in races.old
+                a= race.name
