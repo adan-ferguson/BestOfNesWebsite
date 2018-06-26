@@ -1,6 +1,12 @@
 --- DOING ---
 DB configuration, basic admin page
 
+Figure out data needed
+- Events
+- Games
+- Results
+- Users
+
 --- DB ---
 Figure out data needed
 - Events

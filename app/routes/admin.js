@@ -4,27 +4,44 @@ const twitch = require('../twitch.js')
 const config = require('../config.js')
 const guid = require('uuid/v4')
 
-router.get('/', async (req, res) => {
+async function checkCredentials(req, res, next){
 
   let user = req.session.username
 
-  if(!user){
+  if(req.method === 'GET' && !user){
+    res.redirect('admin/login')
+  }else if(req.method === 'POST' && !user){
+    res.send(404)
+  }else if(userHasAdminCredentials(user)){
+    res.send(404)
+  }else{
+    next()
+  }
+}
 
-    let id = guid()
+function userHasAdminCredentials(username){
 
-    return res.render('admin/login', {
-      title: 'Admin Login',
-      twitchLoginLink: twitch.getLoginLink(id),
-      stateID: id
-    })
+  if(!username){
+    return false
   }
 
-  if(!userHasAdminCredentials(user)){
-    return res.sendStatus(404)
-  }
+  return config.accounts.admins.indexOf(username) > -1
+}
 
+router.get('/', checkCredentials, async (req, res) => {
   return res.render('admin/dashboard', {
     title: 'Admin Dashboard'
+  })
+})
+
+router.get('/login', (req, res) => {
+
+  let id = guid()
+
+  res.render('admin/login', {
+    title: 'Admin Login',
+    twitchLoginLink: twitch.getLoginLink(id),
+    stateID: id
   })
 })
 
@@ -41,14 +58,5 @@ router.post('/checkAccessToken', async (req, res) => {
     valid: valid
   })
 })
-
-function userHasAdminCredentials(username){
-
-  if(!username){
-    return false
-  }
-
-  return config.accounts.admins.indexOf(username) > -1
-}
 
 module.exports = router

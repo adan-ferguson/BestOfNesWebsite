@@ -19,4 +19,8 @@ const defaults = {
   requireHttps: false
 }
 
+if(!options.secret){
+  throw 'config.json requires a "secret" value'
+}
+
 module.exports = Object.assign(defaults, options)
