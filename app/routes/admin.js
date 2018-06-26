@@ -12,7 +12,7 @@ async function checkCredentials(req, res, next){
     res.redirect('admin/login')
   }else if(req.method === 'POST' && !user){
     res.send(404)
-  }else if(userHasAdminCredentials(user)){
+  }else if(!userHasAdminCredentials(user)){
     res.send(404)
   }else{
     next()
