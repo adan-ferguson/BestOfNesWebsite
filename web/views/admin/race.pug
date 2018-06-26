@@ -9,14 +9,16 @@ block content
             .form-group
                 label Date
                 input.date-input.form-control(name="date" type="text" placeholder="Event date")
-            .form-group
-                label Visible to Public
-                input.form-control(name="public" type="checkbox")
+            .form-group.form-check
+                input.form-check-input(name="public" type="checkbox")
+                label.form-check-label Visible to Public
+                br
                 small.font-text.text-muted Don't check this until you're ready for everyone to see it.
-            .form-group
-                label Finished
-                input.form-control(name="finished" type="checkbox")
-                small.font-text.text-muted Check this once the race is f
+            .form-group.form-check
+                input.form-check-input(name="finished" type="checkbox")
+                label.form-check-label Finished
+                br
+                small.font-text.text-muted Check this once the race is finished.
         .games
             | games
         .participants
