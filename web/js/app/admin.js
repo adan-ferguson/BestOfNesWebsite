@@ -2,16 +2,17 @@
 
   const Admin = {}
 
-  Admin.handleSaveRace = function(){
+  Admin.initRaceEditPage = function(){
 
     let form = document.querySelector('form#edit-race')
-
-    form.addEventListener('submit', e => {
-
-      e.preventDefault()
-
+    new window.Pikaday({
+      field: form.querySelector('.date-input')
     })
 
+    form.addEventListener('submit', e => {
+      console.log('submitting')
+      e.preventDefault()
+    })
   }
 
   BestOfNes.Admin = Admin

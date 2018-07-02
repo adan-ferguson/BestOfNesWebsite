@@ -28,6 +28,9 @@ HTTPS/SSL
 CSS mimetype issue
 
 ============================================================
+--- 2018-07-02 ---
+Datepicker
+
 --- 2018-06-28 ---
 DB configuration, basic admin page
 
