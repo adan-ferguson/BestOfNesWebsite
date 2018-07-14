@@ -28,7 +28,30 @@ block content
                 br
                 small.font-text.text-muted Check this once the race is finished.
         section.games
-            | games
+            .games-list
+                each game in (race.games || []).concat({sample: true})
+                        .game(class=game.sample ? 'sample' : '')
+                            .form-group.row
+                                label.col-sm-2 Name
+                                .col-sm-10
+                                    input.form-control(name="game[][name]" type="text" value=game.name)
+                            .form-group.row
+                                label.col-sm-2 Goal
+                                .col-sm-10
+                                    input.form-control(name="game[][goal]" type="text" value=game.goal)
+                            .form-group.row
+                                label.col-sm-2 Timing
+                                .col-sm-10
+                                    input.form-control(name="game[][timing]" type="text" value=game.timing)
+                            .form-group.row
+                                label.col-sm-2 Rules
+                                .col-sm-10
+                                    textarea.form-control(name="game[][rules]" type="text") #{game.rules}
+                            .form-group.row
+                                label.col-sm-2 Resources
+                                .col-sm-10
+                                    textarea.form-control(name="game[][resources]" type="text") #{game.timing}
+            button.btn.btn-primary.add-game(type='button') + Add Game
         section.participants
             | participants
         button.save.btn.btn-info(type="submit") Save Changes
