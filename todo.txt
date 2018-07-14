@@ -2,10 +2,14 @@
 Create/edit race
 
 Figure out data needed
-- Events
+- Event info
 - Games
-- Results
-- Users
+-- Collapsing
+-- Reordering
+- Participants
+-- Allow people to sign up with twitch or form
+-- Accept/reject
+-- Add time and vod link
 
 --- DB ---
 Figure out data needed
@@ -31,6 +35,7 @@ CSS mimetype issue
 --- 2018-07-14 ---
 Create/edit race:
 - Tabbing
+- Game listing
 
 --- 2018-07-02 ---
 Datepicker

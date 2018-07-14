@@ -26,7 +26,10 @@ block content
                 input.form-check-input(name="finished" type="checkbox")
                 label.form-check-label Finished
                 br
-                small.font-text.text-muted Check this once the race is finished.
+                small.font-text.text-muted Check this once the race is finished (so it will appear in previous races listing).
+            .form-group
+                label VOD
+                input.form-control(name="name" type="text" placeholder="Add link to video of the race after it's completed")
         section.games
             .games-list
                 each game in (race.games || []).concat({sample: true})
