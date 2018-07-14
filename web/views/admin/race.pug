@@ -2,7 +2,15 @@ extends ../templates/main.pug
 
 block content
     form#edit-race.container
-        .info
+        nav
+            ul.nav.nav-tabs
+                li.nav-item
+                    a.active.nav-link Info
+                li.nav-item
+                    a.nav-link Games
+                li.nav-item
+                    a.nav-link Participants
+        section.info.active
             .form-group
                 label Name
                 input.form-control(name="name" type="text" placeholder="Enter event name here")
@@ -19,11 +27,11 @@ block content
                 label.form-check-label Finished
                 br
                 small.font-text.text-muted Check this once the race is finished.
-        .games
+        section.games
             | games
-        .participants
+        section.participants
             | participants
-        button(type="submit") Save
+        button.save.btn.btn-info(type="submit") Save Changes
 block postscript
     script.
       window.BestOfNes.Admin.initRaceEditPage()

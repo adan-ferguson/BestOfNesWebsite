@@ -28,6 +28,10 @@ HTTPS/SSL
 CSS mimetype issue
 
 ============================================================
+--- 2018-07-14 ---
+Create/edit race:
+- Tabbing
+
 --- 2018-07-02 ---
 Datepicker
 
