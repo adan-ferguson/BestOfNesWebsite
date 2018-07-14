@@ -9,7 +9,7 @@
     form = document.querySelector('form#edit-race')
 
     tabs()
-    addGame()
+    games()
     pikaday()
     submit()
   }
@@ -39,15 +39,16 @@
     })
   }
 
-  function addGame(){
+  function games(){
 
     let list = form.querySelector('.games-list')
-    let sample = form.querySelector('.game.sample')
-    sample.classList.remove('sample')
+    let sample = form.querySelector('.input-group.game') // first one is the sample
+    let gameCount = form.querySelectorAll('.input-group.game').length
     sample.remove()
 
     form.querySelector('button.add-game').addEventListener('click', () => {
       let newGame = sample.cloneNode(true)
+      newGame.querySelector('.game-number').textContent = gameCount++
       list.appendChild(newGame)
     })
   }
