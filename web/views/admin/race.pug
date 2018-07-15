@@ -13,23 +13,23 @@ block content
         section.info.active
             .form-group
                 label Name
-                input.form-control(name="name" type="text" placeholder="Enter event name here")
+                input.form-control(name='name' type='text' placeholder='Enter event name here')
             .form-group
                 label Date
-                input.date-input.form-control(name="date" type="text" placeholder="Event date")
+                input.date-input.form-control(name='date' type='text' placeholder='Event date')
             .form-group.form-check
-                input.form-check-input(name="public" type="checkbox")
+                input.form-check-input(name='public' type='checkbox')
                 label.form-check-label Visible to Public
                 br
                 small.font-text.text-muted Don't check this until you're ready for everyone to see it.
             .form-group.form-check
-                input.form-check-input(name="finished" type="checkbox")
+                input.form-check-input(name='finished' type='checkbox')
                 label.form-check-label Finished
                 br
                 small.font-text.text-muted Check this once the race is finished (so it will appear in previous races listing).
             .form-group
                 label VOD
-                input.form-control(name="name" type="text" placeholder="Add link to video of the race after it's completed")
+                input.form-control(name='name' type='text' placeholder="Add link to video of the race after it's completed")
         section.games
             .games-list
                 each game, index in [{}].concat(race.games || [])
@@ -39,37 +39,39 @@ block content
                                 span.game-number #{index}
                         input.form-control(type='text' readonly)
                         .input-group-append
-                            button.btn.btn-outline-secondary(type='button') Up
-                            button.btn.btn-outline-secondary(type='button') Down
-                            button.btn.btn-outline-primary(type='button') Edit
-                            button.btn.btn-outline-danger(type='button') Delete
+                            button.btn.btn-outline-secondary.move-up(type='button') Up
+                            button.btn.btn-outline-secondary.move-down(type='button') Down
+                            button.btn.btn-outline-primary.edit(type='button') Edit
+                            button.btn.btn-outline-danger.delete(type='button') Delete
             button.btn.btn-primary.add-game(type='button') + Add Game
         section.participants
             | participants
-        button.save.btn.btn-info(type="submit") Save Changes
-    .game-edit-modal
-        //.game(class=game.sample ? 'sample' : '')
-        //    .form-group.row
-        //        label.col-sm-2 Game
-        //            span.game-number #{index + 1}
-        //        .col-sm-10
-        //            input.form-control(name="game[][name]" type="text" value=game.name)
-        //    .form-group.row
-        //        label.col-sm-2 Goal
-        //        .col-sm-10
-        //            input.form-control(name="game[][goal]" type="text" value=game.goal)
-        //    .form-group.row
-        //        label.col-sm-2 Timing
-        //        .col-sm-10
-        //            input.form-control(name="game[][timing]" type="text" value=game.timing)
-        //    .form-group.row
-        //        label.col-sm-2 Rules
-        //        .col-sm-10
-        //            textarea.form-control(name="game[][rules]" type="text") #{game.rules}
-        //    .form-group.row
-        //        label.col-sm-2 Resources
-        //        .col-sm-10
-        //            textarea.form-control(name="game[][resources]" type="text") #{game.timing}
+        button.save.btn.btn-info(type='submit') Save Changes
+    .game-edit-modal.modal
+        .modal-dialog.modal-dialog-centered
+            .modal-content
+                .modal-header
+                    h5.modal-title Edit Game
+                    button.close(type='button')
+                        span &times;
+                .modal-body
+                    .form-group
+                        label Game
+                        input.form-control(type='text' data-prop='name')
+                    .form-group
+                        label Goal
+                        input.form-control(type='text' data-prop='goal')
+                    .form-group
+                        label Timing
+                            input.form-control(type='text' data-prop='timing')
+                    .form-group
+                        label Rules
+                        textarea.form-control(data-prop='rules')
+                    .form-group
+                        label Resources
+                        textarea.form-control(data-prop='resources')
+                .modal-footer
+                    button.btn.btn-primary(type='button') Save
 block postscript
     script.
       window.BestOfNes.Admin.initRaceEditPage()

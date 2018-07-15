@@ -5,6 +5,7 @@ module.exports = {
     return [
       'vendor/**/*.js',
       'app/index.js',
+      'app/**/index.js',
       'app/**/*.js'
     ].map(s => path.join(prependDir, s))
   },

@@ -4,14 +4,15 @@
 
   let form
 
-  Admin.initRaceEditPage = function(){
+  Admin.initRaceEditPage = function() {
 
     form = document.querySelector('form#edit-race')
 
-    tabs()
-    games()
     pikaday()
     submit()
+    tabs()
+
+    Admin.GamesTab.init(form)
   }
 
   function tabs(){
@@ -39,20 +40,6 @@
     })
   }
 
-  function games(){
-
-    let list = form.querySelector('.games-list')
-    let sample = form.querySelector('.input-group.game') // first one is the sample
-    let gameCount = form.querySelectorAll('.input-group.game').length
-    sample.remove()
-
-    form.querySelector('button.add-game').addEventListener('click', () => {
-      let newGame = sample.cloneNode(true)
-      newGame.querySelector('.game-number').textContent = gameCount++
-      list.appendChild(newGame)
-    })
-  }
-
   function getElementIndex(element){
 
     let i = -1
@@ -62,6 +49,7 @@
     }
     return i
   }
+
 
   function pikaday(){
     new window.Pikaday({
