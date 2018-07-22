@@ -19,10 +19,6 @@
     setupListeners()
   }
 
-  function getGameEl(game){
-    return list.querySelector(`.game[data-game-id="${game.id}"]`)
-  }
-
   function getGame(gameEl){
     return games.find(g => {
       return g.id === gameEl.getAttribute('data-game-id')
@@ -39,6 +35,12 @@
 
   function setupListeners(){
 
+    window.addEventListener('click', () => {
+      list.querySelectorAll('.dropdown-menu').forEach(el => {
+        el.style.display = 'none'
+      })
+    })
+
     list.addEventListener('click', e => {
 
       let target = e.target
@@ -47,7 +49,16 @@
         return
       }
 
-      let targetGameEl = target.parentElement.parentElement
+      let targetGameEl = target
+
+      while(targetGameEl && !targetGameEl.classList.contains('game')){
+        targetGameEl = targetGameEl.parentNode
+      }
+
+      if(!targetGameEl){
+        return
+      }
+
       let targetGame = getGame(targetGameEl)
 
       if(target.classList.contains('move-up')){
@@ -57,8 +68,12 @@
       }else if(target.classList.contains('edit')){
         edit(targetGame)
       }else if(target.classList.contains('delete')){
+        showDeleteDropdown(targetGameEl)
+      }else if(target.classList.contains('confirm-delete')){
         deleteGame(targetGame)
       }
+
+      e.stopPropagation()
     })
 
     form.querySelector('button.add-game').addEventListener('click', () => {
@@ -103,7 +118,13 @@
     modal.show(game)
   }
 
+  function showDeleteDropdown(gameEl){
+    gameEl.querySelector('.dropdown-menu').style.display = 'block'
+  }
+
   function deleteGame(game){
+
+
     games.splice(game.index, 1)
     updateGames()
   }
