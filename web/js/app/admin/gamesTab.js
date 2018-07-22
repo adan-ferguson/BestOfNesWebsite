@@ -15,13 +15,25 @@
     list = form.querySelector('.games-list')
     modal = new Modal(document.querySelector('.game-edit-modal'))
 
-    createGames()
+    updateGames()
     setupListeners()
   }
 
-  function createGames(){
-    games.forEach(game => {
-      newGame(game)
+  function getGameEl(game){
+    return list.querySelector(`.game[data-game-id="${game.id}"]`)
+  }
+
+  function getGame(gameEl){
+    return games.find(g => {
+      return g.id === gameEl.getAttribute('data-game-id')
+    })
+  }
+
+  function updateGames(){
+    list.innerHTML = ''
+    games.forEach((game, i) => {
+      game.index = i
+      makeGameEl(game)
     })
   }
 
@@ -35,7 +47,8 @@
         return
       }
 
-      let targetGame = target.parentElement.parentElement
+      let targetGameEl = target.parentElement.parentElement
+      let targetGame = getGame(targetGameEl)
 
       if(target.classList.contains('move-up')){
         move(targetGame, -1)
@@ -56,30 +69,34 @@
       }
 
       games.push(game)
-      newGame(game)
+      updateGames()
     })
+
+    modal.onSave = updateGames
   }
 
-  function newGame(game){
+  function makeGameEl(game){
     let gameTemplate = document.querySelector('template')
-    let gameEl = gameTemplate.content.querySelector(".game").cloneNode(true)
+    let gameEl = gameTemplate.content.querySelector('.game').cloneNode(true)
     gameEl.setAttribute('data-game-id', game.id)
+    gameEl.querySelector('.game-number').textContent = game.index + 1
+    gameEl.querySelector('.name').value = game.name || ''
     list.appendChild(gameEl)
-    updateGameNumbers()
   }
 
-  function updateGameNumbers(){
-    list.querySelectorAll('.game').forEach((el, i) => {
-      el.querySelector('.game-number').textContent = i + 1
+  function move(game, direction){
 
-      if(el.getAttribute('data-game-id') !== games[i].id){
-        throw 'Game order error'
-      }
-    })
-  }
+    // Don't do anything if at end
+    if(direction < 0 && game.index === 0){
+      return
+    }
+    if(direction > 0 && game.index === games.length - 1){
+      return
+    }
 
-  function move(game, amount){
-
+    games.splice(game.index, 1)
+    games.splice(game.index + direction, 0, game)
+    updateGames()
   }
 
   function edit(game){
@@ -87,7 +104,8 @@
   }
 
   function deleteGame(game){
-
+    games.splice(game.index, 1)
+    updateGames()
   }
 
   class Modal {
@@ -102,7 +120,7 @@
         this.hide()
       })
 
-      save.addEventListener('save', () => {
+      save.addEventListener('click', () => {
         this.save()
         this.hide()
       })
@@ -119,11 +137,17 @@
     }
 
     hide(){
-      modal.style.display = 'hidden'
+      this.el.style.display = 'none'
     }
 
     save(){
+      this.fields.forEach(el => {
+        this.game[el.getAttribute('data-prop')] = el.value
+      })
 
+      if(this.onSave){
+        this.onSave()
+      }
     }
   }
   BestOfNes.Admin.GamesTab = GamesTab
