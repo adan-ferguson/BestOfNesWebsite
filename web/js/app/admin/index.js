@@ -12,7 +12,7 @@
     submit()
     tabs()
 
-    Admin.GamesTab.init(form)
+    Admin.GamesTab.init(form, race.games)
   }
 
   function tabs(){
