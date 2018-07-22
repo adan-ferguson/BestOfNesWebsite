@@ -16,7 +16,10 @@ module.exports = {
   get: async function(id){
 
     if(id === 'new'){
-      return {}
+      return {
+        games: [],
+        participants: []
+      }
     }else{
       return await db().collection('races').findOne({id: id})
     }

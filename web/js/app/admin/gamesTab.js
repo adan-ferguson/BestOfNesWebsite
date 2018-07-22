@@ -61,17 +61,21 @@
   }
 
   function newGame(game){
-    let gameTemplate = document.querySelector('template.game')
-    let gameEl = gameTemplate.clone(true)
+    let gameTemplate = document.querySelector('template')
+    let gameEl = gameTemplate.content.querySelector(".game").cloneNode(true)
     gameEl.setAttribute('data-game-id', game.id)
     list.appendChild(gameEl)
     updateGameNumbers()
   }
 
   function updateGameNumbers(){
+    list.querySelectorAll('.game').forEach((el, i) => {
+      el.querySelector('.game-number').textContent = i + 1
 
-
-    gameEl.querySelector('.game-number').textContent = index
+      if(el.getAttribute('data-game-id') !== games[i].id){
+        throw 'Game order error'
+      }
+    })
   }
 
   function move(game, amount){

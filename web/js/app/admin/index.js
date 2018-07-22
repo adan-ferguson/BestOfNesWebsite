@@ -4,7 +4,7 @@
 
   let form
 
-  Admin.initRaceEditPage = function() {
+  Admin.initRaceEditPage = function(race) {
 
     form = document.querySelector('form#edit-race')
 
