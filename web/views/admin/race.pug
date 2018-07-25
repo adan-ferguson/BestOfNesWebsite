@@ -71,9 +71,10 @@ block content
                 button.btn.btn-outline-secondary.move-up(type='button') Up
                 button.btn.btn-outline-secondary.move-down(type='button') Down
                 button.btn.btn-outline-primary.edit(type='button') Edit
-                button.btn.btn-outline-danger.delete.dropdown-toggle(type='button') Delete
-                .dropdown-menu
-                    button.dropdown-item.confirm-delete(href='#') Confirm delete game
+                div.delete-dropdown
+                    button.btn.btn-outline-danger.delete.dropdown-toggle(type='button') Delete
+                    .dropdown-menu
+                        button.dropdown-item.confirm-delete Confirm delete game
 
 block postscript
     script.

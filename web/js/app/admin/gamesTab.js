@@ -35,12 +35,6 @@
 
   function setupListeners(){
 
-    window.addEventListener('click', () => {
-      list.querySelectorAll('.dropdown-menu').forEach(el => {
-        el.style.display = 'none'
-      })
-    })
-
     list.addEventListener('click', e => {
 
       let target = e.target
@@ -67,13 +61,9 @@
         move(targetGame, 1)
       }else if(target.classList.contains('edit')){
         edit(targetGame)
-      }else if(target.classList.contains('delete')){
-        showDeleteDropdown(targetGameEl)
       }else if(target.classList.contains('confirm-delete')){
         deleteGame(targetGame)
       }
-
-      e.stopPropagation()
     })
 
     form.querySelector('button.add-game').addEventListener('click', () => {
@@ -97,6 +87,8 @@
     gameEl.querySelector('.game-number').textContent = game.index + 1
     gameEl.querySelector('.name').value = game.name || ''
     list.appendChild(gameEl)
+
+    new Dropdown(gameEl.querySelector('.delete-dropdown'))
   }
 
   function move(game, direction){
@@ -118,13 +110,7 @@
     modal.show(game)
   }
 
-  function showDeleteDropdown(gameEl){
-    gameEl.querySelector('.dropdown-menu').style.display = 'block'
-  }
-
   function deleteGame(game){
-
-
     games.splice(game.index, 1)
     updateGames()
   }
