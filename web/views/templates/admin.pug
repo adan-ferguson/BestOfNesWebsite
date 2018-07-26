@@ -1,0 +1,15 @@
+html
+    head
+        title Best of Nes - #{title}
+        //- inject:css
+        //- endinject
+    body
+        header
+            include ../partials/header.pug
+        content.container.admin
+            block content
+        footer
+            include ../partials/footer.pug
+        //- inject:js
+        //- endinject
+        block postscript
