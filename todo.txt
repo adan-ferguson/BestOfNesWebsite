@@ -1,7 +1,5 @@
 --- DOING ---
 Create/edit race
-
-Figure out data needed
 - Event info
 - Games
 -- Collapsing
@@ -10,6 +8,12 @@ Figure out data needed
 -- Allow people to sign up with twitch or form
 -- Accept/reject
 -- Add time and vod link
+- Link to public page
+
+Public page
+- Future race
+- Past race
+- Ongoing race
 
 --- DB ---
 Figure out data needed

@@ -23,5 +23,10 @@ module.exports = {
     }else{
       return await db().collection('races').findOne({id: id})
     }
+  },
+
+  save: async function(race){
+    race.id = 5000
+    // todo: save
   }
 }

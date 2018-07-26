@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 const twitch = require('../twitch.js')
 const config = require('../config.js')
-const guid = require('uuid/v4')
 const races = require('../models/races.js')
+const guid = require('uuid/v4')
 
 async function checkCredentials(req, res, next){
 
@@ -47,6 +47,14 @@ router.get('/races/:id', checkCredentials, async (req, res) => {
   return res.render('admin/race', {
     title: 'Admin - Edit Race',
     race: race
+  })
+})
+
+router.put('/races/:id', checkCredentials, async (req, res) => {
+  let race = JSON.parse(req.headers.race)
+  await races.save(race)
+  res.send({
+    redirectTo: '/admin/races/' + race.id
   })
 })
 

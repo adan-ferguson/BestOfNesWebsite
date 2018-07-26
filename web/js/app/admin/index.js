@@ -3,8 +3,9 @@
   const Admin = {}
 
   let form
+  let race
 
-  Admin.initRaceEditPage = function(race) {
+  Admin.initRaceEditPage = function(_race) {
 
     form = document.querySelector('form#edit-race')
 
@@ -12,6 +13,7 @@
     submit()
     tabs()
 
+    race = _race
     Admin.GamesTab.init(form, race.games)
   }
 
@@ -58,9 +60,31 @@
   }
 
   function submit(){
-    form.addEventListener('submit', e => {
-      console.log('submitting')
+    form.addEventListener('submit', async e => {
       e.preventDefault()
+
+      let info = form.querySelector('.info')
+      info.querySelectorAll('input[type="text"]').forEach(el => {
+        race[el.getAttribute('data-prop-name')] = el.value
+      })
+      info.querySelectorAll('input[type="checkbox"]').forEach(el => {
+        race[el.getAttribute('data-prop-name')] = el.checked
+      })
+
+      let response = await fetch('', {
+        headers: {
+          race: JSON.stringify(race)
+        },
+        method: 'put',
+        credentials: 'include'
+      })
+      
+      let result = await response.json()
+
+      if(result.redirectTo){
+        window.location = result.redirectTo
+      }
+
     })
   }
 

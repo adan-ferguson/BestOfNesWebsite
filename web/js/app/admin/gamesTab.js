@@ -88,7 +88,7 @@
     gameEl.querySelector('.name').value = game.name || ''
     list.appendChild(gameEl)
 
-    new Dropdown(gameEl.querySelector('.delete-dropdown'))
+    new window.Dropdown(gameEl.querySelector('.delete-dropdown'))
   }
 
   function move(game, direction){
