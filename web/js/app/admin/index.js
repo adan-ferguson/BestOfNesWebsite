@@ -55,7 +55,8 @@
 
   function pikaday(){
     new window.Pikaday({
-      field: form.querySelector('.date-input')
+      field: form.querySelector('.date-input'),
+      showTime: true
     })
   }
 
@@ -78,7 +79,7 @@
         method: 'put',
         credentials: 'include'
       })
-      
+
       let result = await response.json()
 
       if(result.redirectTo){
