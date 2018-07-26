@@ -54,7 +54,7 @@ router.put('/races/:id', checkCredentials, async (req, res) => {
   let race = JSON.parse(req.headers.race)
   await races.save(race)
   res.send({
-    redirectTo: '/admin/races/' + race.id
+    redirectTo: '/admin/races/' + race._id
   })
 })
 

@@ -1,4 +1,5 @@
-const MongoClient = require('mongodb').MongoClient
+const MongoDB = require('mongodb')
+const MongoClient = MongoDB.MongoClient
 const config = require('./config.js')
 const log = require('fancy-log')
 
@@ -16,6 +17,7 @@ async function connect(){
 
 connect()
 
-module.exports = function(){
-  return connection
+module.exports = {
+  conn: () => connection,
+  id: id => MongoDB.ObjectID(id)
 }

@@ -7,13 +7,21 @@
 
   Admin.initRaceEditPage = function(_race) {
 
+    race = _race
     form = document.querySelector('form#edit-race')
+
+    let info = form.querySelector('.info')
+    info.querySelectorAll('input[type="text"]').forEach(el => {
+      el.value = race[el.getAttribute('data-prop-name')] || ''
+    })
+    info.querySelectorAll('input[type="checkbox"]').forEach(el => {
+      el.checked = race[el.getAttribute('data-prop-name')] || false
+    })
 
     pikaday()
     submit()
     tabs()
 
-    race = _race
     Admin.GamesTab.init(form, race.games)
   }
 

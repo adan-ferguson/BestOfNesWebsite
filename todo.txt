@@ -9,6 +9,12 @@ Create/edit race
 -- Accept/reject
 -- Add time and vod link
 - Link to public page
+- "Last updated" near the save button
+
+Admin page
+----------
+- List races
+- Delete a race
 
 Public page
 - Future race
@@ -21,10 +27,6 @@ Figure out data needed
 - Games
 - Results
 - Users
-
---- Admin ---
-- Add/edit events
-- Add/edit games
 
 --- Public ---
 - Show stream on homepage if it's up
