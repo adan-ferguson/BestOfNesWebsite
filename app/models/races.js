@@ -39,7 +39,8 @@ module.exports = {
   save: async function(race){
 
     let racesCollection = db.conn().collection('races')
-    race._id = db.id(race.id)
+    race._id = db.id(race._id)
+    race.lastUpdated = new Date().toISOString()
     await racesCollection.save(race)
   }
 }

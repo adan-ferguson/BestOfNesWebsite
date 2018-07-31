@@ -1,6 +1,7 @@
---- BUGS ---
-- Slug
-- Saving isn't updating, it's making a new copy
+Routing
+- Slug OR _id routing
++ Slug
++ Saving isn't updating, it's making a new copy
 
 Create/edit race
 - Nice name
@@ -26,6 +27,9 @@ HTTPS/SSL
 CSS mimetype issue
 
 ============================================================
+--- 2018-07-31 ---
+- Forgot to write stuff
+
 --- 2018-07-14 ---
 Create/edit race:
 - Tabbing

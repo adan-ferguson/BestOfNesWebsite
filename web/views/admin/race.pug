@@ -22,7 +22,8 @@ block content
                     input.form-control(data-prop-name='slug' type='text' placeholder='my-cool-race')
             .form-group
                 label Description
-                textarea.form-control(data-prop-name='name' placeholder='Description of event')
+                textarea.form-control(data-prop-name='name' placeholder='Description of event' +
+                '')
             .form-group
                 label Date
                 input.date-input.form-control(data-prop-name='date' readonly='readonly' type='text' placeholder='Event date')
@@ -45,6 +46,7 @@ block content
         section.participants
             | participants
         button.save.btn.btn-info(type='submit') Save Changes
+        small.last-updated #{race.lastUpdated ? "Last updated - " + new Date(race.lastUpdated) : ""}
     .game-edit-modal.modal
         .modal-dialog.modal-dialog-centered
             .modal-content
