@@ -7,8 +7,16 @@ block content
             | Create new
         div.upcoming
             each race in races.upcoming
-                a= race.name
-        div.old
+                div.race
+                    span #{race.name}
+                    a.view(href='races/' + (race.slug || race._id)) View
+                    a.edit(href='admin/races/' + (race.slug || race._id)) Edit
+                    a.delete Delete
+        div.olde
             each race in races.old
-                a= race.name
+                div.race
+                    span #{race.name}
+                    a.view(href='races/' + (race.slug || race._id)) View
+                    a.edit(href='admin/races/' + (race.slug || race._id)) Edit
+                    a.delete Delete
 block postscript

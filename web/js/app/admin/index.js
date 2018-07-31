@@ -73,12 +73,16 @@
       e.preventDefault()
 
       let info = form.querySelector('.info')
+
       info.querySelectorAll('input[type="text"]').forEach(el => {
         race[el.getAttribute('data-prop-name')] = el.value
       })
+
       info.querySelectorAll('input[type="checkbox"]').forEach(el => {
         race[el.getAttribute('data-prop-name')] = el.checked
       })
+
+      troubleshoot(race)
 
       let response = await fetch('', {
         headers: {
@@ -95,6 +99,14 @@
       }
 
     })
+  }
+
+  function troubleshoot(race){
+    // ISO format date, use a placeolder date if none provided
+    race.date = new Date(race.date ? race.date : '2020-01-01').toISOString()
+
+    // Remove whitespace from slug
+    race.slug = race.slug.replace(/ /g,'-')
   }
 
   BestOfNes.Admin = Admin

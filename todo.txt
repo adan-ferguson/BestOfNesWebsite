@@ -1,36 +1,24 @@
---- DOING ---
+--- BUGS ---
+- Slug
+- Saving isn't updating, it's making a new copy
+
 Create/edit race
-- Event info
-- Games
--- Collapsing
--- Reordering
-- Participants
--- Allow people to sign up with twitch or form
--- Accept/reject
--- Add time and vod link
-- Link to public page
+- Nice name
+- Event description
 - "Last updated" near the save button
 
-Admin page
-----------
+Dashboard
 - List races
 - Delete a race
 
-Public page
-- Future race
-- Past race
-- Ongoing race
+Participants
+-- Allow people to sign up with twitch or form
+-- Accept/reject
+-- Add time and vod link
 
---- DB ---
-Figure out data needed
-- Events
-- Games
-- Results
-- Users
-
---- Public ---
+Homepage
+- Upcoming races or events
 - Show stream on homepage if it's up
-- Events pages
 
 --- Server ---
 Header

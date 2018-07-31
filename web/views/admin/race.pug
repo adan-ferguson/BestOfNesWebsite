@@ -15,6 +15,15 @@ block content
                 label Name
                 input.form-control(data-prop-name='name' type='text' placeholder='Enter event name here')
             .form-group
+                label URL Name
+                .input-group
+                    .input-group-prepend
+                        span.input-group-text bestofnes.com/races/
+                    input.form-control(data-prop-name='slug' type='text' placeholder='my-cool-race')
+            .form-group
+                label Description
+                textarea.form-control(data-prop-name='name' placeholder='Description of event')
+            .form-group
                 label Date
                 input.date-input.form-control(data-prop-name='date' readonly='readonly' type='text' placeholder='Event date')
             .form-group.form-check

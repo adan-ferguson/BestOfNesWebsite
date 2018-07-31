@@ -4,8 +4,19 @@ module.exports = {
 
   list: async function(){
 
-    let old = await db.conn().collection('races').find({date: {$lt: new Date()}}).sort({date: -1}).toArray()
-    let upcoming = await db.conn().collection('races').find({date: {$gte: new Date()}}).sort({date: -1}).toArray()
+    let date = new Date().toISOString()
+
+    let old = await db.conn()
+      .collection('races')
+      .find({date: {$lt: date}})
+      .sort({date: -1})
+      .toArray()
+
+    let upcoming = await db.conn()
+      .collection('races')
+      .find({date: {$gte: date}})
+      .sort({date: -1})
+      .toArray()
 
     return {
       upcoming: upcoming,
