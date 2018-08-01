@@ -3,6 +3,8 @@ Routing
 + Slug
 + Saving isn't updating, it's making a new copy
 
+Message when DB is down/not running
+
 Create/edit race
 - Nice name
 - Event description

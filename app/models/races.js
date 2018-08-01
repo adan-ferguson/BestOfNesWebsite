@@ -24,16 +24,27 @@ module.exports = {
     }
   },
 
-  get: async function(id){
-
-    if(id === 'new'){
-      return {
-        games: [],
-        participants: []
-      }
-    }else{
-      return await db.conn().collection('races').findOne(db.id(id))
+  new: function(){
+    return {
+      games: [],
+      participants: []
     }
+  },
+
+  get: async function(idOrSlug = null){
+
+    let query = {$or: []}
+
+    try {
+      let id = db.id(idOrSlug)
+      query.$or.push({_id: id})
+    }catch(e){
+
+    }
+
+    query.$or.push({slug: idOrSlug})
+
+    return await db.conn().collection('races').findOne(query)
   },
 
   save: async function(race){

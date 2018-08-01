@@ -38,7 +38,12 @@ router.get('/', checkCredentials, async (req, res) => {
 
 router.get('/races/:id', checkCredentials, async (req, res) => {
 
-  let race = await races.get(req.params.id)
+  let race
+  if(req.params.id === 'new'){
+    race = races.new()
+  }else{
+    race = await races.get(req.params.id)
+  }
 
   if(!race){
     return res.send(404)
