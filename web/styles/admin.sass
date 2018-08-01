@@ -1,0 +1,48 @@
+content.admin
+  position: relative
+  max-width: 800px
+  display: block
+
+form#edit-race
+
+  nav
+    a
+      cursor: pointer
+
+      &:hover, &.active
+        color: cadetblue
+
+  section
+    display: none
+    margin-bottom: 10px
+    border-bottom: 1px solid #DDD
+    padding: 15px
+
+    &.active
+      display: block
+
+  .games-list
+
+    .game
+      padding: 3px
+
+      .delete-dropdown
+        button
+          border-left: none
+          border-top-left-radius: 0
+          border-bottom-left-radius: 0
+        .dropdown-menu
+          right: 0
+          left: initial
+
+  button.add-game
+    margin-top: 10px
+
+.game-edit-modal
+  background-color: #7777
+
+  .modal-dialog
+    max-width: 600px
+
+  .modal-content
+    padding: 15px

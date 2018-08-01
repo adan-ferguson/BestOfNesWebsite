@@ -1,4 +1,22 @@
-extends ../templates/main.pug
+extends ../templates/admin.pug
 
 block content
-    | Welcome to dashboard
+    div.races
+        | Races
+        a(href="admin/races/new")
+            | Create new
+        div.upcoming
+            each race in races.upcoming
+                div.race
+                    span #{race.name}
+                    a.view(href='races/' + (race.slug || race._id)) View
+                    a.edit(href='admin/races/' + (race.slug || race._id)) Edit
+                    a.delete Delete
+        div.olde
+            each race in races.old
+                div.race
+                    span #{race.name}
+                    a.view(href='races/' + (race.slug || race._id)) View
+                    a.edit(href='admin/races/' + (race.slug || race._id)) Edit
+                    a.delete Delete
+block postscript

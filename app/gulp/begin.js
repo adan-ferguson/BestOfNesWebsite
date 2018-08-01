@@ -3,7 +3,7 @@ const compile = require('./compile.js')
 const inject = require('./inject.js')
 const log = require('fancy-log')
 
-const watch = require('gulp-watch')
+const watch = require('gulp-debounced-watch')
 
 module.exports = async (gulp, options) => {
 

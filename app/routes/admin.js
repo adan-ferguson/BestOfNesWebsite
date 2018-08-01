@@ -2,29 +2,75 @@ const express = require('express')
 const router = express.Router()
 const twitch = require('../twitch.js')
 const config = require('../config.js')
+const races = require('../models/races.js')
 const guid = require('uuid/v4')
 
-router.get('/', async (req, res) => {
+async function checkCredentials(req, res, next){
 
   let user = req.session.username
 
-  if(!user){
+  if(req.method === 'GET' && !user){
+    res.redirect('/admin/login')
+  }else if(req.method === 'POST' && !user){
+    res.send(404)
+  }else if(!userHasAdminCredentials(user)){
+    res.send(404)
+  }else{
+    next()
+  }
+}
 
-    let id = guid()
+function userHasAdminCredentials(username){
 
-    return res.render('admin/login', {
-      title: 'Admin Login',
-      twitchLoginLink: twitch.getLoginLink(id),
-      stateID: id
-    })
+  if(!username){
+    return false
   }
 
-  if(!userHasAdminCredentials(user)){
-    return res.sendStatus(404)
-  }
+  return config.accounts.admins.indexOf(username) > -1
+}
 
+router.get('/', checkCredentials, async (req, res) => {
   return res.render('admin/dashboard', {
-    title: 'Admin Dashboard'
+    title: 'Admin Dashboard',
+    races: await races.list()
+  })
+})
+
+router.get('/races/:id', checkCredentials, async (req, res) => {
+
+  let race
+  if(req.params.id === 'new'){
+    race = races.new()
+  }else{
+    race = await races.get(req.params.id)
+  }
+
+  if(!race){
+    return res.send(404)
+  }
+
+  return res.render('admin/race', {
+    title: 'Admin - Edit Race',
+    race: race
+  })
+})
+
+router.put('/races/:id', checkCredentials, async (req, res) => {
+  let race = JSON.parse(req.headers.race)
+  await races.save(race)
+  res.send({
+    redirectTo: '/admin/races/' + race._id
+  })
+})
+
+router.get('/login', (req, res) => {
+
+  let id = guid()
+
+  res.render('admin/login', {
+    title: 'Admin Login',
+    twitchLoginLink: twitch.getLoginLink(id),
+    stateID: id
   })
 })
 
@@ -41,14 +87,5 @@ router.post('/checkAccessToken', async (req, res) => {
     valid: valid
   })
 })
-
-function userHasAdminCredentials(username){
-
-  if(!username){
-    return false
-  }
-
-  return config.accounts.admins.indexOf(username) > -1
-}
 
 module.exports = router

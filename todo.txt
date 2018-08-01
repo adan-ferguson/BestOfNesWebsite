@@ -1,19 +1,27 @@
---- DOING ---
+Routing
+- Slug OR _id routing
++ Slug
++ Saving isn't updating, it's making a new copy
 
---- DB ---
-Figure out data needed
-- Events
-- Games
-- Results
-- Users
+Message when DB is down/not running
 
---- Admin ---
-- Add/edit events
-- Add/edit games
+Create/edit race
+- Nice name
+- Event description
+- "Last updated" near the save button
 
---- Public ---
+Dashboard
+- List races
+- Delete a race
+
+Participants
+-- Allow people to sign up with twitch or form
+-- Accept/reject
+-- Add time and vod link
+
+Homepage
+- Upcoming races or events
 - Show stream on homepage if it's up
-- Events pages
 
 --- Server ---
 Header
@@ -21,6 +29,23 @@ HTTPS/SSL
 CSS mimetype issue
 
 ============================================================
+--- 2018-07-31 ---
+- Forgot to write stuff
+
+--- 2018-07-14 ---
+Create/edit race:
+- Tabbing
+- Game listing
+
+--- 2018-07-02 ---
+Datepicker
+
+--- 2018-06-28 ---
+DB configuration, basic admin page
+
+--- 2018-06-12 ---
+DB setup stuff
+
 --- 2018-06-10 ---
 cross-domain state check variable
 server-side auth token check to see if admin page available
