@@ -39,7 +39,7 @@ module.exports = {
       let id = db.id(idOrSlug)
       query.$or.push({_id: id})
     }catch(e){
-
+      //
     }
 
     query.$or.push({slug: idOrSlug})

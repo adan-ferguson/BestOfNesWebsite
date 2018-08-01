@@ -1,9 +1,5 @@
-Routing
-- Slug OR _id routing
-+ Slug
-+ Saving isn't updating, it's making a new copy
-
-Message when DB is down/not running
+Admin
+- Header link to dashboard
 
 Create/edit race
 - Nice name
@@ -11,7 +7,8 @@ Create/edit race
 - "Last updated" near the save button
 
 Dashboard
-- List races
++ List races
+- Styling
 - Delete a race
 
 Participants
@@ -24,13 +21,20 @@ Homepage
 - Show stream on homepage if it's up
 
 --- Server ---
-Header
-HTTPS/SSL
-CSS mimetype issue
+- Message when DB is down/not running
+- Header
+- HTTPS/SSL
+- CSS mimetype issue
 
 ============================================================
 --- 2018-07-31 ---
-- Forgot to write stuff
+
+Routing
++ Slug OR _id routing
++ Slug
++ Saving isn't updating, it's making a new copy
+
++ Forgot to write stuff
 
 --- 2018-07-14 ---
 Create/edit race:

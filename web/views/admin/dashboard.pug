@@ -6,17 +6,23 @@ block content
         a(href="admin/races/new")
             | Create new
         div.upcoming
+            h1 Upcoming
             each race in races.upcoming
                 div.race
-                    span #{race.name}
+                    span.name #{race.name}
+                    span.date #{race.date}
                     a.view(href='races/' + (race.slug || race._id)) View
                     a.edit(href='admin/races/' + (race.slug || race._id)) Edit
                     a.delete Delete
         div.olde
+            h1 Completed
             each race in races.old
                 div.race
-                    span #{race.name}
+                    span.name #{race.name}
+                    span.date #{race.date}
                     a.view(href='races/' + (race.slug || race._id)) View
                     a.edit(href='admin/races/' + (race.slug || race._id)) Edit
                     a.delete Delete
 block postscript
+    script.
+        BestOfNes.Admin.Dashboard.convertDates()
