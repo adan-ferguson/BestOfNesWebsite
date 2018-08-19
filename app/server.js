@@ -5,6 +5,7 @@ const directories = require('./directories')
 const config = require('./config.js')
 const session = require('express-session')
 const db = require('./db.js')
+db.init()
 
 const app = express()
   .use(session({

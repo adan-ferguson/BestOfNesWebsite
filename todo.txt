@@ -1,6 +1,3 @@
-Admin
-- Header link to dashboard if admin
-
 Dashboard
 - Styling of race list
 - Delete a race
@@ -14,6 +11,10 @@ Participants
 Homepage
 - Upcoming races or events
 - Show stream on homepage if it's up
+
+General
+- Make sure titles are all set correctly
+- Cross browser
 
 --- Server ---
 - Message when DB is down/not running
