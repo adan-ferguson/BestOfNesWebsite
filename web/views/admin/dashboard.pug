@@ -7,22 +7,22 @@ block content
             | Create new
         div.upcoming
             h1 Upcoming
-            each race in races.upcoming
-                div.race
-                    span.name #{race.name}
-                    span.date #{race.date}
-                    a.view(href='races/' + (race.slug || race._id)) View
-                    a.edit(href='admin/races/' + (race.slug || race._id)) Edit
-                    a.delete Delete
-        div.olde
-            h1 Completed
-            each race in races.old
-                div.race
-                    span.name #{race.name}
-                    span.date #{race.date}
-                    a.view(href='races/' + (race.slug || race._id)) View
-                    a.edit(href='admin/races/' + (race.slug || race._id)) Edit
-                    a.delete Delete
+        div.running
+            h1 Running
+        div.finished
+            h1 Finished
+    template
+        .input-group.race
+            .input-group-prepend
+                span.input-group-text.date
+            input.name.form-control(type='text' readonly)
+            .input-group-append
+                button.btn.btn-outline-primary.view(type='button') View
+                button.btn.btn-outline-primary.edit(type='button') Edit
+                div.delete-dropdown
+                    button.btn.btn-outline-danger.delete.dropdown-toggle(type='button') Delete
+                    .dropdown-menu
+                        button.dropdown-item.confirm-delete Confirm delete race
 block postscript
     script.
-        BestOfNes.Admin.Dashboard.convertDates()
+        BestOfNes.Admin.Dashboard.init(!{JSON.stringify(races)})

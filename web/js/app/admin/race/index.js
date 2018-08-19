@@ -1,8 +1,7 @@
 (function(){
 
   const Race = {}
-  const Admin = BestOfNes.Admin
-  Admin.Race = Race
+  BestOfNes.Admin.Race = Race
 
   let form
   let race
@@ -24,7 +23,7 @@
     submit()
     tabs()
 
-    Admin.GamesTab.init(form, race.games)
+    Race.GamesTab.init(form, race.games)
   }
 
   function tabs(){

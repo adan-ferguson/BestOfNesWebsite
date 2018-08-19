@@ -1,15 +1,10 @@
 Admin
-- Header link to dashboard
-
-Create/edit race
-- Nice name
-- Event description
-- "Last updated" near the save button
+- Header link to dashboard if admin
 
 Dashboard
-+ List races
-- Styling
+- Styling of race list
 - Delete a race
+- Make sure races are in the correct categories
 
 Participants
 -- Allow people to sign up with twitch or form
@@ -27,7 +22,16 @@ Homepage
 - CSS mimetype issue
 
 ============================================================
+--- 2018-08-09 ---
+
 --- 2018-07-31 ---
+Create/edit race
++ Nice name
++ Event description
++ "Last updated" near the save button
+
+Dashboard
++ List races
 
 Routing
 + Slug OR _id routing

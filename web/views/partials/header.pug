@@ -1,1 +1,10 @@
-div My Header
+nav.navbar.navbar-expand-sm.navbar-light#header
+    a.navbar-brand(href='/') [Insert logo here]
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#menubar' aria-controls='menubar' aria-expanded='false' aria-label='Toggle Navigation')
+        span.navbar-toggler-icon
+    div.collapse.navbar-collapse#menubar
+        ul.navbar-nav
+            li.nav-item
+                a.nav-link(href='/marathons') Marathons
+            li.nav-item
+                a.nav-link(href='/races') Races

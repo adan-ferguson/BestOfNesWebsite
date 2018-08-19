@@ -1,6 +1,7 @@
 (function(){
 
   const GamesTab = {}
+  BestOfNes.Admin.Race.GamesTab = GamesTab
 
   let form
   let modal
@@ -157,5 +158,4 @@
       }
     }
   }
-  BestOfNes.Admin.GamesTab = GamesTab
 })()
