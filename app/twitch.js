@@ -29,6 +29,11 @@ module.exports = {
     }
 
     return 'https://id.twitch.tv/oauth2/authorize' + jsonToQueryString(obj)
+  },
+  // Attach the user's twitch username to the res.render data variable
+  usernameMiddleware: (req, res, next) => {
+    res.locals.twitchUsername = req.session.username || null
+    next()
   }
 }
 
