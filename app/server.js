@@ -20,7 +20,7 @@ const app = express()
   .set('view engine', 'pug')
   .set('views', directories.COMPILED.VIEWS)
   .use('/static', express.static(directories.STATIC))
-  .use(twitch.accountMiddleware)
+  .use(twitch.middleware)
   .use('/', require('./routes/public.js'))
   .use('/admin', require('./routes/admin.js'))
 

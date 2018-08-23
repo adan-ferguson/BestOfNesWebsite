@@ -19,25 +19,76 @@
     window.location = redirectTarget
   }
 
-  Twitch.checkAdminLogin = async function(){
+  let twitchNav
+  Twitch.checkLogin = async function(twitchInfo){
+
+    twitchNav = new TwitchNav(document.querySelector('#header .twitchInfo'))
+
+    // Check our access token if we're not already logged in
+    if(!twitchInfo.username && localStorage.accessToken){
+      checkAccessToken()
+    }else{
+      twitchNav.update(twitchInfo)
+    }
+  }
+
+  async function checkAccessToken(){
 
     if(!localStorage.accessToken) {
+      notLoggedIn()
       return
     }
 
     let headers = new Headers()
     headers.append('access-token', localStorage.accessToken)
 
-    let response = await fetch('/admin/checkAccessToken', {
+    let response = await fetch('/checkAccessToken', {
       method: 'post',
       headers: headers,
       credentials: 'include'
     })
 
-    let data = await response.json()
+    let twitchInfo = await response.json()
+    twitchNav.update(twitchInfo)
+  }
 
-    if(data.valid){
-      window.location = '/admin'
+  class TwitchNav {
+
+    constructor(el){
+      this.els = el.querySelectorAll('.option')
+    }
+
+    update(twitchInfo){
+      this.twitchInfo = twitchInfo
+      if(twitchInfo.username){
+        this._loggedIn()
+      }else{
+        this._notLoggedIn()
+      }
+    }
+
+    _loggedIn(){
+      let el = this.els[1]
+      this._showEl(el)
+
+      let a = el.querySelector('a')
+      a.text = this.twitchInfo.username
+      a.href = 'https://twitch.tv/' + this.twitchInfo.username
+    }
+
+    _notLoggedIn(){
+      let el = this.els[2]
+      this._showEl(el)
+
+      let a = el.querySelector('a')
+      a.addEventListener('click', () => {
+        localStorage.redirectTarget = window.location.pathname
+      })
+    }
+
+    _showEl(el){
+      this.els.forEach(e => e.classList.add('hidden'))
+      el.classList.remove('hidden')
     }
   }
 

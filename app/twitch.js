@@ -1,7 +1,8 @@
 const request = require('request-promise-native')
 const config = require('./config.js')
+const guid = require('uuid/v4')
 
-module.exports = {
+const twitch = {
   getUsernameFromAccessToken: async (token) => {
     let resp = await request({
       method: 'get',
@@ -30,10 +31,18 @@ module.exports = {
 
     return 'https://id.twitch.tv/oauth2/authorize' + jsonToQueryString(obj)
   },
-  // Attach the user's twitch username to the res.render data variable
-  usernameMiddleware: (req, res, next) => {
-    res.locals.twitchUsername = req.session.username || null
+  middleware: (req, res, next) => {
+    // Attach the user's twitch info or general login info
+    res.locals.twitch = twitch.getTwitchInfo(req.session.username)
     next()
+  },
+  getTwitchInfo: username => {
+    let id = guid()
+    return  {
+      username: username || null,
+      loginLink: twitch.getLoginLink(id),
+      stateID: id
+    }
   }
 }
 
@@ -44,3 +53,5 @@ function jsonToQueryString(json) {
         encodeURIComponent(json[key])
     }).join('&')
 }
+
+module.exports = twitch

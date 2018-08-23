@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const races = require('../models/races.js')
+const twitch = require('../twitch.js')
 
 router.get('/', (req, res) => {
   res.render('homepage', {title: 'Homepage'})
@@ -32,6 +33,16 @@ router.get('/races/:id', async (req, res) => {
 
 router.get('/twitchredirect', (req, res) => {
   res.render('twitchredirect')
+})
+
+router.post('/checkAccessToken', async (req, res) => {
+
+  let username = await twitch.getUsernameFromAccessToken(req.headers['access-token'])
+  if(username){
+    req.session.username = username
+  }
+
+  res.send(twitch.getTwitchInfo(req.session.username))
 })
 
 module.exports = router
