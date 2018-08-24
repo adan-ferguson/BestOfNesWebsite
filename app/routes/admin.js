@@ -8,9 +8,9 @@ router.use((req, res, next) => {
   let user = req.session.username
 
   if(!user){
-    res.send(404)
+    res.sendStatus(403)
   }else if(config.accounts.admins.indexOf(user) === -1){
-    res.send(404)
+    res.sendStatus(403)
   }else{
     next()
   }
@@ -21,6 +21,11 @@ router.get('/', async (req, res) => {
     title: 'Admin Dashboard',
     races: await races.list()
   })
+})
+
+router.delete('/races/:id', async (req, res) => {
+  let success = await races.delete(req.params.id)
+  res.sendStatus(success ? 200 : 400)
 })
 
 router.get('/races/:id', async (req, res) => {

@@ -12,13 +12,12 @@ block content
         div.finished
             h1 Finished
     template
-        .input-group.race
-            .input-group-prepend
-                span.input-group-text.date
-            input.name.form-control(type='text' readonly)
-            .input-group-append
-                button.btn.btn-outline-primary.view(type='button') View
-                button.btn.btn-outline-primary.edit(type='button') Edit
+        .race.row
+            span.date.col-6.col-sm-2
+            span.name.col-6.col-sm-5
+            .buttons.col-12.col-sm-5
+                a.btn.btn-outline-primary.view(target='blank') View
+                a.btn.btn-outline-primary.edit Edit
                 div.delete-dropdown
                     button.btn.btn-outline-danger.delete.dropdown-toggle(type='button') Delete
                     .dropdown-menu

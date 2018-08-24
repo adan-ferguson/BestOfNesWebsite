@@ -21,10 +21,24 @@
       }
 
       races.forEach(race => {
+
         let el = raceSample.cloneNode(true)
-        el.setAttribute('data-slug', race.slug || race._id)
-        el.querySelector('.date').text = race.date
-        el.querySelector('.name').value = race.name
+        let slug = race.slug || race._id
+
+        el.querySelector('.date').textContent = race.date
+        el.querySelector('.name').textContent = race.name
+        el.querySelector('.edit').href = '/admin/races/' + slug
+        el.querySelector('.view').href = '/races/' + slug
+        el.querySelector('.confirm-delete').addEventListener('click', async () => {
+          targetEl.removeChild(el)
+          await fetch('/admin/races/' + slug, {
+            method: 'delete',
+            credentials: 'include'
+          })
+        })
+
+        new window.Dropdown(el.querySelector('.delete-dropdown'))
+
         targetEl.append(el)
       })
     }

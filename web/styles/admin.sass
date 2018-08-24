@@ -6,12 +6,21 @@
   .races
 
     .race
-      margin-bottom: 4px
+      margin-bottom: 6px
+      border-bottom: 1px solid #888
+      padding: 6px
 
-    button
-      border-left: none
-      border-top-left-radius: 0
-      border-bottom-left-radius: 0
+      .date
+        font-size: 0.7em
+
+      .delete-dropdown
+        display: inline-block
+
+      .view, .edit, .delete
+        margin-left: 4px
+
+        &:hover
+          color: white
 
   form#edit-race
 
@@ -56,3 +65,4 @@
 
     .modal-content
       padding: 15px
+

@@ -32,19 +32,7 @@ module.exports = {
   },
 
   get: async function(idOrSlug = null){
-
-    let query = {$or: []}
-
-    try {
-      let id = db.id(idOrSlug)
-      query.$or.push({_id: id})
-    }catch(e){
-      //
-    }
-
-    query.$or.push({slug: idOrSlug})
-
-    return await db.conn().collection('races').findOne(query)
+    return await db.conn().collection('races').findOne(orize(idOrSlug))
   },
 
   save: async function(race){
@@ -53,5 +41,25 @@ module.exports = {
     race._id = db.id(race._id)
     race.lastUpdated = new Date().toISOString()
     await racesCollection.save(race)
+  },
+
+  delete: async function(idOrSlug){
+    let result = await db.conn().collection('races').deleteOne(orize(idOrSlug))
+    return result.deletedCount === 1
   }
+}
+
+function orize(idOrSlug){
+
+  let query = {$or: []}
+
+  try {
+    let id = db.id(idOrSlug)
+    query.$or.push({_id: id})
+  }catch(e){
+    //
+  }
+
+  query.$or.push({slug: idOrSlug})
+  return query
 }
