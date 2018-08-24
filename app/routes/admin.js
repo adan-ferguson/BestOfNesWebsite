@@ -7,10 +7,12 @@ router.use((req, res, next) => {
 
   let user = req.session.username
 
-  if(!user){
-    res.sendStatus(403)
-  }else if(config.accounts.admins.indexOf(user) === -1){
-    res.sendStatus(403)
+  if(!user || config.accounts.admins.indexOf(user) === -1){
+    if(req.method === 'GET'){
+      res.redirect('/')
+    }else{
+      res.sendStatus(403)
+    }
   }else{
     next()
   }

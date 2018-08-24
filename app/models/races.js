@@ -6,21 +6,28 @@ module.exports = {
 
     let date = new Date().toISOString()
 
-    let old = await db.conn()
+    let upcoming = await db.conn()
       .collection('races')
-      .find({date: {$lt: date}})
+      .find({date: {$gte: date}, finished: {$eq: false}})
       .sort({date: -1})
       .toArray()
 
-    let upcoming = await db.conn()
+    let running = await db.conn()
       .collection('races')
-      .find({date: {$gte: date}})
+      .find({date: {$lt: date}, finished: {$eq: false}})
+      .sort({date: -1})
+      .toArray()
+
+    let finished = await db.conn()
+      .collection('races')
+      .find({finished: {$eq: true}})
       .sort({date: -1})
       .toArray()
 
     return {
       upcoming: upcoming,
-      old: old
+      running: running,
+      finished: finished
     }
   },
 
