@@ -93,12 +93,7 @@
         credentials: 'include'
       })
 
-      let result = await response.json()
-
-      if(result.redirectTo){
-        window.location = result.redirectTo
-      }
-
+      window.location = '/admin'
     })
   }
 
