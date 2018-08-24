@@ -1,3 +1,5 @@
+$twitch: #6441A4
+
 #header
   -webkit-box-shadow: 0 0 7px 0 rgba(101, 101, 101, 0.6)
   -moz-box-shadow: 0 0 7px 0 rgba(101, 101, 101, 0.6)
@@ -5,3 +7,28 @@
 
   .hidden
     display: none
+
+  .nav-link.twitch
+
+    padding-top: 8px
+
+    .option
+      font-size: 0.8em
+      padding: 4px 8px
+      margin-left: 8px
+
+      span
+        padding-left: 8px
+
+      &.notLoggedIn
+        color: $twitch
+        border: 1px solid $twitch
+
+      &.loggedIn
+        color: white
+        background-color: $twitch
+        padding: 4px 8px
+        margin-left: 8px
+
+    .dropdown
+      cursor: pointer

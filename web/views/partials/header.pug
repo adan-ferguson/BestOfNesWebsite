@@ -8,9 +8,19 @@ nav.navbar.navbar-expand-sm.navbar-light#header
                 a.nav-link(href='/marathons') Marathons
             li.nav-item
                 a.nav-link(href='/races') Races
-            li.nav-item.twitchInfo
-                .option.loading.hidden
-                .option.logged-in.hidden Logged in as
-                    a
-                .option.login.hidden Log in with
-                    a Twitch
+            li.nav-item
+                .nav-link.twitch(mode='loading')
+                    .option.loading Loading
+                    .option.loggedIn.dropdown
+                        .dropdown-toggle
+                            i.fab.fa-twitch
+                            span.name
+                        .dropdown-menu
+                            a.dropdown-item.admin(href='/admin')
+                                i.fa.fa-lock
+                                span Admin
+                            a.dropdown-item.my-channel(target='blank') My Channel
+                            a.dropdown-item.logout(href='/logout') Logout
+                    a.option.notLoggedIn
+                        i.fab.fa-twitch
+                        span Log in

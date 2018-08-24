@@ -1,4 +1,4 @@
-content.admin
+.container.admin
   position: relative
   max-width: 800px
   display: block
@@ -13,48 +13,46 @@ content.admin
       border-top-left-radius: 0
       border-bottom-left-radius: 0
 
+  form#edit-race
 
+    nav
+      a
+        cursor: pointer
 
-form#edit-race
+        &:hover, &.active
+          color: cadetblue
 
-  nav
-    a
-      cursor: pointer
+    section
+      display: none
+      margin-bottom: 10px
+      border-bottom: 1px solid #DDD
+      padding: 15px
 
-      &:hover, &.active
-        color: cadetblue
+      &.active
+        display: block
 
-  section
-    display: none
-    margin-bottom: 10px
-    border-bottom: 1px solid #DDD
-    padding: 15px
+    .games-list
 
-    &.active
-      display: block
+      .game
+        padding: 3px
 
-  .games-list
+        .delete-dropdown
+          button
+            border-left: none
+            border-top-left-radius: 0
+            border-bottom-left-radius: 0
+          .dropdown-menu
+            right: 0
+            left: initial
 
-    .game
-      padding: 3px
+    button.add-game
+      margin-top: 10px
 
-      .delete-dropdown
-        button
-          border-left: none
-          border-top-left-radius: 0
-          border-bottom-left-radius: 0
-        .dropdown-menu
-          right: 0
-          left: initial
+  .game-edit-modal
+    background-color: #7777
 
-  button.add-game
-    margin-top: 10px
+    .modal-dialog
+      max-width: 600px
 
-.game-edit-modal
-  background-color: #7777
-
-  .modal-dialog
-    max-width: 600px
-
-  .modal-content
-    padding: 15px
+    .modal-content
+      padding: 15px

@@ -1,17 +1,4 @@
-html
-    head
-        title Best of Nes - #{title}
-        //- inject:css
-        //- endinject
-    body
-        header
-            include ../partials/header.pug
-        content
-            block content
-        footer
-            include ../partials/footer.pug
-        //- inject:js
-        //- endinject
-        block postscript
-        script.
-            BestOfNes.Twitch.checkLogin(!{JSON.stringify(_locals.twitch)})
+extends baseTemplate.pug
+block body
+    content.main
+        block content

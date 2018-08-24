@@ -22,7 +22,7 @@
   let twitchNav
   Twitch.checkLogin = async function(twitchInfo){
 
-    twitchNav = new TwitchNav(document.querySelector('#header .twitchInfo'))
+    twitchNav = new TwitchNav(document.querySelector('#header .nav-link.twitch'))
 
     // Check our access token if we're not already logged in
     if(!twitchInfo.username && localStorage.accessToken){
@@ -55,7 +55,22 @@
   class TwitchNav {
 
     constructor(el){
-      this.els = el.querySelectorAll('.option')
+      this.link = el
+
+      this.link.querySelectorAll('.dropdown').forEach(dd => {
+        new window.Dropdown(dd)
+      })
+
+      this.link.querySelector('.logout').addEventListener('click', () => {
+        localStorage.clear()
+      })
+
+      this.link.querySelector('.notLoggedIn').addEventListener('click', () => {
+        localStorage.stateGuid = this.twitchInfo.stateID
+        localStorage.redirectTarget = window.location.pathname
+      })
+
+      this._showOption(this.link.getAttribute('mode'))
     }
 
     update(twitchInfo){
@@ -68,27 +83,24 @@
     }
 
     _loggedIn(){
-      let el = this.els[1]
-      this._showEl(el)
-
-      let a = el.querySelector('a')
-      a.text = this.twitchInfo.username
-      a.href = 'https://twitch.tv/' + this.twitchInfo.username
+      this._showOption('loggedIn')
+      this.link.querySelector('.my-channel').href = 'https://twitch.tv/' + this.twitchInfo.username
+      this.link.querySelector('.name').textContent = this.twitchInfo.username
     }
 
     _notLoggedIn(){
-      let el = this.els[2]
-      this._showEl(el)
-
-      let a = el.querySelector('a')
-      a.addEventListener('click', () => {
-        localStorage.redirectTarget = window.location.pathname
-      })
+      this._showOption('notLoggedIn')
+      this.link.querySelector('.notLoggedIn').href = this.twitchInfo.loginLink
     }
 
-    _showEl(el){
-      this.els.forEach(e => e.classList.add('hidden'))
-      el.classList.remove('hidden')
+    _showOption(name){
+      this.link.setAttribute('mode', name)
+      this.link.querySelectorAll('.option').forEach(e => {
+        e.classList.add('hidden')
+        if(e.classList.contains(name)){
+          e.classList.remove('hidden')
+        }
+      })
     }
   }
 

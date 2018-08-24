@@ -7,6 +7,11 @@ router.get('/', (req, res) => {
   res.render('homepage', {title: 'Homepage'})
 })
 
+router.get('/logout', (req, res) => {
+  req.session.destroy()
+  res.redirect('/')
+})
+
 router.get('/marathons', (req, res) => {
   res.render('marathons', {title: 'Marathons'})
 })
