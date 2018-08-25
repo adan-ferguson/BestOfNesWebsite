@@ -47,7 +47,8 @@ module.exports = {
     let racesCollection = db.conn().collection('races')
     race._id = db.id(race._id)
     race.lastUpdated = new Date().toISOString()
-    await racesCollection.save(race)
+    let result = await racesCollection.save(race)
+    return result.result.ok === 1
   },
 
   delete: async function(idOrSlug){

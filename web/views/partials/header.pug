@@ -11,7 +11,7 @@ nav.navbar.navbar-expand-sm.navbar-light#header
             li.nav-item
                 .nav-link.twitch(mode='loading')
                     .option.loading Loading
-                    .option.loggedIn.dropdown
+                    .option.loggedIn.dropdown.hidden
                         .dropdown-toggle
                             i.fab.fa-twitch
                             span.name
@@ -21,6 +21,6 @@ nav.navbar.navbar-expand-sm.navbar-light#header
                                 span Admin
                             a.dropdown-item.my-channel(target='blank') My Channel
                             a.dropdown-item.logout(href='/logout') Logout
-                    a.option.notLoggedIn
+                    a.option.notLoggedIn.hidden
                         i.fab.fa-twitch
                         span Log in

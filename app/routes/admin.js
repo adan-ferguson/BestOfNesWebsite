@@ -51,7 +51,8 @@ router.get('/races/:id', async (req, res) => {
 
 router.put('/races/:id', async (req, res) => {
   let race = JSON.parse(req.headers.race)
-  await races.save(race)
+  let success = await races.save(race)
+  res.sendStatus(success ? 200 : 400)
 })
 
 module.exports = router
