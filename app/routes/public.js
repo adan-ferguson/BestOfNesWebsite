@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const races = require('../models/races.js')
+const marathons = require('../models/marathons.js')
 const twitch = require('../twitch.js')
 
 router.get('/', (req, res) => {
@@ -13,7 +14,11 @@ router.get('/logout', (req, res) => {
 })
 
 router.get('/marathons', (req, res) => {
-  res.render('marathons', {title: 'Marathons'})
+
+  res.render('marathons', {
+    title: 'Marathons',
+    pastMarathons: marathons.getPast()
+  })
 })
 
 router.get('/races', (req, res) => {

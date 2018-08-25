@@ -1,8 +1,11 @@
 Home page
-- Upcoming races or events
++ Navigation buttons and stuff
 - Show stream on homepage if it's up
 
 Marathon page
+- About
+- Link to schedule/twitter
+- Links to previous marathons
 
 Race page
 - Show data
