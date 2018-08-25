@@ -1,8 +1,10 @@
+$bigblue: #071226
+
 #index
   .splashscreen
     width: 100%
     height: 600px
-    background: #071226 url('/static/images/splashscreen-1920.jpg') no-repeat center
+    background: $bigblue url('/static/images/splashscreen-1920.jpg') no-repeat center
     background-size: 1080px 100%
 
   .links
@@ -32,6 +34,28 @@
 
       &.youtube
         background-color: #ff0000
+
+  .site-description
+    padding: 20px
+
+  .featured
+    background-color: #EEE
+    border-radius: 5px
+    padding: 20px
+    text-decoration: none
+    text-align: center
+    color: $bigblue
+    display: inline-block
+    margin-bottom: 10px
+    width: 100%
+    font-size: 2em
+    transition: all 0.3s ease
+
+    &:hover
+      background-color: $bigblue
+      color: white
+
+
 
 @media screen and (max-width: 575px)
   #index
