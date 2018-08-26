@@ -50,6 +50,52 @@
     })
   }
 
+  Utils.tabize = function(links, sections){
+
+    let currentIndex = -1
+    set(0)
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+
+        let newIndex = getElementIndex(e.target.parentElement)
+
+        if(newIndex === currentIndex){
+          return
+        }
+
+        set(newIndex)
+      })
+    })
+
+
+    function set(i){
+
+      if(currentIndex === -1){
+        links.forEach(l => l.classList.remove('active'))
+        sections.forEach(s => s.classList.add('hidden'))
+      }else{
+        links[currentIndex].classList.remove('active')
+        sections[currentIndex].classList.add('hidden')
+      }
+
+      links[i].classList.add('active')
+      sections[i].classList.remove('hidden')
+
+      currentIndex = i
+    }
+
+    function getElementIndex(element){
+
+      let i = -1
+      while(element){
+        i++
+        element = element.previousElementSibling
+      }
+      return i
+    }
+  }
+
   BestOfNes.Utils = Utils
 
 })()

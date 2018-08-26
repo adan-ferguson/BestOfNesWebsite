@@ -27,40 +27,10 @@
   }
 
   function tabs(){
-
     let tabButtons = form.querySelectorAll('.nav-link')
     let sections = form.querySelectorAll('section')
-    let currentIndex = 0
-
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', e => {
-
-        let newIndex = getElementIndex(e.target.parentElement)
-
-        if(newIndex === currentIndex){
-          return
-        }
-
-        tabButtons[currentIndex].classList.remove('active')
-        sections[currentIndex].classList.remove('active')
-        tabButtons[newIndex].classList.add('active')
-        sections[newIndex].classList.add('active')
-
-        currentIndex = newIndex
-      })
-    })
+    BestOfNes.Utils.tabize(tabButtons, sections)
   }
-
-  function getElementIndex(element){
-
-    let i = -1
-    while(element){
-      i++
-      element = element.previousElementSibling
-    }
-    return i
-  }
-
 
   function pikaday(){
     new window.Pikaday({
@@ -85,7 +55,7 @@
 
       troubleshoot(race)
 
-      let response = await fetch('', {
+      await fetch('', {
         headers: {
           race: JSON.stringify(race)
         },
