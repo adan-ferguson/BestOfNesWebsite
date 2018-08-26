@@ -1,4 +1,23 @@
 extends templates/main.pug
 
 block content
-    #races Races info here
+    #races.container
+        .section
+            if races.upcoming.length
+                h2 Upcoming
+                each race in races.upcoming
+                    include partials/racelink
+        .section
+            if races.running.length
+                h2 Running
+                each race in races.running
+                    include partials/racelink
+        .section
+            if races.finished.length
+                h2 Finished
+                each race in races.finished
+                    include partials/racelink
+
+block postscript
+    script.
+        BestOfNes.Utils.convertDates()

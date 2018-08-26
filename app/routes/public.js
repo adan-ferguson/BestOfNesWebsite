@@ -21,8 +21,11 @@ router.get('/marathons', (req, res) => {
   })
 })
 
-router.get('/races', (req, res) => {
-  res.render('races', {title: 'Races'})
+router.get('/races', async (req, res) => {
+  res.render('races', {
+    title: 'Races',
+    races: await races.list()
+  })
 })
 
 router.get('/races/:id', async (req, res) => {
@@ -30,7 +33,7 @@ router.get('/races/:id', async (req, res) => {
   let race = await races.get(req.params.id)
 
   if(!race){
-    return res.send(404)
+    return res.redirect('/races')
   }
 
   res.locals.title = 'Race'

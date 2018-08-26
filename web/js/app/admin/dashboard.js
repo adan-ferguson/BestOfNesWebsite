@@ -11,7 +11,7 @@
     makeRaceRows(document.querySelector('.races .running'), races.running)
     makeRaceRows(document.querySelector('.races .finished'), races.finished)
 
-    Dashboard.convertDates()
+    BestOfNes.Utils.convertDates()
 
     function makeRaceRows(targetEl, races){
 
@@ -42,13 +42,6 @@
         targetEl.append(el)
       })
     }
-  }
-
-  Dashboard.convertDates = function(){
-    document.querySelectorAll('.race .date').forEach(el => {
-      let m = window.moment(el.textContent)
-      el.textContent = m.format('MMMM Do YYYY, hh:mma Z')
-    })
   }
 
 })()
