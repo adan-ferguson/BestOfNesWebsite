@@ -1,3 +1,5 @@
+$bigblue: #071226
+
 a.social
   display: inline-block
   color: white
@@ -30,6 +32,18 @@ body
 .material-shadow
   background-color: white
   box-shadow: 4px 4px 10px 0px #bbb
+
+.big-button
+  background-color: white
+  border-radius: 5px
+  border: 1px solid $bigblue
+  color: $bigblue
+  transition: all 0.3s ease
+
+  &:hover
+    background-color: $bigblue
+    color: white
+    text-decoration: none
 
 input.form-control
   color: black
