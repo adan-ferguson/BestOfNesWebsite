@@ -22,6 +22,7 @@ Admin
 
 
 General
+- favicon
 - Make sure titles are all set correctly
 - Cross browser
 
