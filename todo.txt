@@ -1,11 +1,5 @@
 Home page
-+ Navigation buttons and stuff
 - Show stream on homepage if it's up
-
-Marathon page
-- About
-- Link to schedule/twitter
-- Links to previous marathons
 
 Race page
 - Show data
@@ -20,7 +14,6 @@ Admin
 - Remove user if possible
 - Set user's time / vod
 
-
 General
 - favicon
 - Make sure titles are all set correctly
@@ -30,10 +23,17 @@ General
 - Message when DB is down/not running
 - HTTPS/SSL
 - CSS mimetype issue
+- Make sure production mode works
 
 ============================================================
 --- 2018-08-25 ---
+Home page
++ Navigation buttons and stuff
 
+Marathon page
++ About
++ Link to schedule/twitter
++ Links to previous marathons
 
 --- 2018-08-23 ---
 Dashboard

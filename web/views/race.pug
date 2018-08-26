@@ -6,13 +6,22 @@ block content
             nav
                 ul.nav.nav-tabs
                     li.nav-item
-                        a.nav-link Goals
+                        .nav-link Goals
                     li.nav-item
-                        a.nav-link Rules
-                    li.nav-item
-                        a.nav-link Resources
+                        .nav-link Details
             .sections
-                section.goals Goals
-                section.rules Rules
-                section.resources Resources
+                section.goals
+                    each game in race.games
+                        .name game.name
+                        .goal game.goal
+                section.details
+                    each game in race.games
+                        .name game.name
+                        .goal game.goal
+                        .timing game.timing
+                        .rules game.rules
+                        .resources game.resources
         .material-shadow.participants Participants
+block postscript
+    script.
+        BestOfNes.Race.init()
