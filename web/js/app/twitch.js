@@ -32,10 +32,21 @@
     }
   }
 
+  Twitch.getInfo = function(){
+
+    return new Promise(yay => {
+      if(twitchNav && twitchNav.twitchInfo){
+        return yay(twitchNav.twitchInfo) //LOL
+      }
+      fireAfterInfoRecieved = yay
+    })
+  }
+
+  let fireAfterInfoRecieved
   async function checkAccessToken(){
 
     if(!localStorage.accessToken) {
-      notLoggedIn()
+      twitchNav._notLoggedIn()
       return
     }
 
@@ -50,6 +61,10 @@
 
     let twitchInfo = await response.json()
     twitchNav.update(twitchInfo)
+
+    if(fireAfterInfoRecieved){
+      fireAfterInfoRecieved(twitchInfo)
+    }
   }
 
   class TwitchNav {

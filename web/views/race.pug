@@ -11,17 +11,43 @@ block content
                         .nav-link Details
             .sections
                 section.goals
-                    each game in race.games
-                        .name game.name
-                        .goal game.goal
+                    each game, i in race.games
+                        .game
+                            .name #{i + 1}. #{game.name}
+                            .goal #{game.goal}
                 section.details
-                    each game in race.games
-                        .name game.name
-                        .goal game.goal
-                        .timing game.timing
-                        .rules game.rules
-                        .resources game.resources
-        .material-shadow.participants Participants
+                    each game, i in race.games
+                        .game
+                            .name #{i + 1}. #{game.name}
+                            .goal #{game.goal}
+                            .timing #{game.timing}
+                            .rules #{game.rules}
+                            .resources !{game.resources}
+        if signupsOpen
+            .material-shadow.participants
+                .description
+                    | Here are the runners who have signed up for this race so far.  Signup is optional.  Anyone who wants to join the race only needs to show up on the
+                    |
+                    a(href='http://www.speedrunslive.com/channel/') SpeedRunsLive IRC
+                    |
+                    | and enter the race on the day it happens.
+                .participants-list list
+                if signedUp
+                    Span You are signed up for this race!
+                else
+                    a.race-sign-up
+                        i.fab.fa-twitch
+                        span Sign Up with your Twitch Account
+        else
+            .material-shadow.results
+                h2 Results
+                .results-list Results List
+                if race.link
+                    a(href=race.link) View replay of the race
+
 block postscript
     script.
         BestOfNes.Race.init()
+    if signupsOpen && !signedUp
+        script.
+            BestOfNes.Race.setupSignupLink()

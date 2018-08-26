@@ -11,4 +11,20 @@
     )
   }
 
+  Race.setupSignupLink = async function(){
+    let link = document.querySelector('a.race-sign-up')
+    let twitchInfo = await BestOfNes.Twitch.getInfo()
+
+    // If logged in then we don't need to use twitch link.
+    if(twitchInfo.username){
+      link.href = '?signup=1'
+    }else{
+      link.href = twitchInfo.loginLink
+      link.addEventListener('click', () => {
+        localStorage.stateGuid = twitchInfo.stateID
+        localStorage.redirectTarget = window.location.pathname +'?signup=1'
+      })
+    }
+  }
+
 })()

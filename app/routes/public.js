@@ -40,7 +40,9 @@ router.get('/races/:id', async (req, res) => {
 
   res.render('race', {
     title: 'Race',
-    race: race
+    race: race,
+    signupsOpen: true,
+    signedUp: false
   })
 })
 

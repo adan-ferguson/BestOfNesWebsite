@@ -1,3 +1,28 @@
 #race
   .nav-link
     cursor: pointer
+
+  section
+
+    .game
+      padding: 30px
+      border-bottom: 1px solid #CCC
+
+    .name
+      font-weight: bold
+      font-size: 1.2em
+
+    .goal:before
+      content: ''
+
+    .timing:before
+      content: 'Timing ends when '
+
+    .rules:before
+      content: 'Rules/Clarifications: '
+
+    .resources:before
+      content: 'Resources: '
+
+    > div:empty
+      display: none

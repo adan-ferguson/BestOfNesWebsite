@@ -13,6 +13,7 @@ Participants
 Admin
 - Remove user if possible
 - Set user's time / vod
+- Try with a non-admin user, make sure can't access anything
 
 General
 - favicon
