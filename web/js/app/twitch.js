@@ -2,6 +2,9 @@
 
   const Twitch = {}
 
+  let twitchNav
+  let fireAfterInfoReceived
+
   // User logged in with twitch, parse the query string and save the user's
   // access token in local storage, then redirect to the page it was at before.
   Twitch.handleLogin = async function(){
@@ -16,17 +19,17 @@
       localStorage.idToken = params.id_token
     }
 
+    await checkAccessToken()
     window.location = redirectTarget
   }
 
-  let twitchNav
   Twitch.checkLogin = async function(twitchInfo){
 
     twitchNav = new TwitchNav(document.querySelector('#header .nav-link.twitch'))
 
     // Check our access token if we're not already logged in
     if(!twitchInfo.username && localStorage.accessToken){
-      checkAccessToken()
+      tryLocalToken()
     }else{
       twitchNav.update(twitchInfo)
     }
@@ -38,32 +41,36 @@
       if(twitchNav && twitchNav.twitchInfo){
         return yay(twitchNav.twitchInfo) //LOL
       }
-      fireAfterInfoRecieved = yay
+      fireAfterInfoReceived = yay
     })
   }
 
-  let fireAfterInfoRecieved
   async function checkAccessToken(){
+
+    let headers = new Headers()
+    headers.append('access-token', localStorage.accessToken)
+
+    return await fetch('/checkAccessToken', {
+      method: 'post',
+      headers: headers,
+      credentials: 'include'
+    })
+  }
+
+  async function tryLocalToken(){
 
     if(!localStorage.accessToken) {
       twitchNav._notLoggedIn()
       return
     }
 
-    let headers = new Headers()
-    headers.append('access-token', localStorage.accessToken)
-
-    let response = await fetch('/checkAccessToken', {
-      method: 'post',
-      headers: headers,
-      credentials: 'include'
-    })
+    let response = checkAccessToken()
 
     let twitchInfo = await response.json()
     twitchNav.update(twitchInfo)
 
-    if(fireAfterInfoRecieved){
-      fireAfterInfoRecieved(twitchInfo)
+    if(fireAfterInfoReceived){
+      fireAfterInfoReceived(twitchInfo)
     }
   }
 

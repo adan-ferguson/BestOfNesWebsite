@@ -1,6 +1,6 @@
 const db = require('../db.js')
 
-module.exports = {
+const races = {
 
   list: async function(){
 
@@ -54,8 +54,40 @@ module.exports = {
   delete: async function(idOrSlug){
     let result = await db.conn().collection('races').deleteOne(orize(idOrSlug))
     return result.deletedCount === 1
+  },
+
+  addParticipant: async function(id, username){
+
+    let race = await races.get(id)
+    if(!race.participants) {
+      race.participants = []
+    }
+
+    if(races.isParticipant(race, username)){
+      return false
+    }
+
+    race.participants.push(username)
+    let result = await db.conn().collection('races').save(race)
+    return result.result.ok === 1
+  },
+
+  isParticipant: function(race, username){
+
+    if(!username){
+      return false
+    }
+
+    let u = username.toLowerCase()
+    return race.participants.find(p => p.toLowerCase() === u.toLowerCase())
+  },
+
+  areSignupsOpen: function(race){
+    return new Date(race.date) > new Date()
   }
 }
+
+module.exports = races
 
 function orize(idOrSlug){
 

@@ -28,6 +28,16 @@ router.get('/races', async (req, res) => {
   })
 })
 
+router.get('/races/:id/signup', async (req, res) => {
+
+  if(!req.session.username){
+    return res.redirect('/')
+  }
+
+  await races.addParticipant(req.params.id, req.session.username)
+  res.redirect('/races/' + req.params.id)
+})
+
 router.get('/races/:id', async (req, res) => {
 
   let race = await races.get(req.params.id)
@@ -36,13 +46,13 @@ router.get('/races/:id', async (req, res) => {
     return res.redirect('/races')
   }
 
-  res.locals.title = 'Race'
+  races.isParticipant(race, req.session.username)
 
   res.render('race', {
     title: 'Race',
     race: race,
-    signupsOpen: true,
-    signedUp: false
+    signupsOpen: races.areSignupsOpen(race),
+    signedUp: races.isParticipant(race, req.session.username)
   })
 })
 

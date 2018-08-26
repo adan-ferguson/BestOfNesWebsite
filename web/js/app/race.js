@@ -17,12 +17,12 @@
 
     // If logged in then we don't need to use twitch link.
     if(twitchInfo.username){
-      link.href = '?signup=1'
+      link.href = window.location.pathname + '/signup'
     }else{
       link.href = twitchInfo.loginLink
       link.addEventListener('click', () => {
         localStorage.stateGuid = twitchInfo.stateID
-        localStorage.redirectTarget = window.location.pathname +'?signup=1'
+        localStorage.redirectTarget = window.location.pathname + '/signup'
       })
     }
   }
