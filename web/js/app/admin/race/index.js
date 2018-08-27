@@ -12,9 +12,15 @@
     form = document.querySelector('form#edit-race')
 
     let info = form.querySelector('.info')
+
     info.querySelectorAll('input[type="text"]').forEach(el => {
       el.value = race[el.getAttribute('data-prop-name')] || ''
     })
+
+    info.querySelectorAll('textarea').forEach(el => {
+      el.value = race[el.getAttribute('data-prop-name')] || ''
+    })
+
     info.querySelectorAll('input[type="checkbox"]').forEach(el => {
       el.checked = race[el.getAttribute('data-prop-name')] || false
     })
@@ -51,6 +57,10 @@
       let info = form.querySelector('.info')
 
       info.querySelectorAll('input[type="text"]').forEach(el => {
+        race[el.getAttribute('data-prop-name')] = el.getAttribute('true-value') || el.value
+      })
+
+      info.querySelectorAll('textarea').forEach(el => {
         race[el.getAttribute('data-prop-name')] = el.getAttribute('true-value') || el.value
       })
 
