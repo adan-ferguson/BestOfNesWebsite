@@ -8,7 +8,7 @@ block content
                 .date.date-to-convert #{race.date}
                 .description #{race.description}
                 if _locals.twitch.isAdmin
-                    a.btn.btn-primary.edit(href='/admin/races' + id) Edit
+                    a.btn.btn-primary.edit(href='/admin/races/' + id) Edit
         .material-shadow
             nav
                 ul.nav.nav-tabs
