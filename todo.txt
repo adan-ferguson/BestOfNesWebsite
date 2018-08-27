@@ -2,9 +2,11 @@ Home page
 - Show stream on homepage if it's up
 
 Race page
-- Show data
-- Show participants
++ Show data
++ Show participants
 - Show results if finished
++ Don't show if "visible to public" not checked
+- Show the description at the top
 
 Participants
 - Allow people to sign up with twitch
@@ -16,6 +18,7 @@ Admin
 - Try with a non-admin user, make sure can't access anything
 
 General
+- Timezone issues
 - favicon
 - Make sure titles are all set correctly
 - Cross browser
@@ -27,6 +30,9 @@ General
 - Make sure production mode works
 
 ============================================================
+--- 2018-08-26 ---
+
+
 --- 2018-08-25 ---
 Home page
 + Navigation buttons and stuff

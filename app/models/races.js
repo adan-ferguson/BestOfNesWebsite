@@ -2,25 +2,25 @@ const db = require('../db.js')
 
 const races = {
 
-  list: async function(){
+  list: async function(query = {}){
 
     let date = new Date().toISOString()
 
     let upcoming = await db.conn()
       .collection('races')
-      .find({date: {$gte: date}, finished: {$eq: false}})
+      .find(Object.assign({date: {$gte: date}, finished: {$eq: false}}, query))
       .sort({date: -1})
       .toArray()
 
     let running = await db.conn()
       .collection('races')
-      .find({date: {$lt: date}, finished: {$eq: false}})
+      .find(Object.assign({date: {$lt: date}, finished: {$eq: false}}, query))
       .sort({date: -1})
       .toArray()
 
     let finished = await db.conn()
       .collection('races')
-      .find({finished: {$eq: true}})
+      .find(Object.assign({finished: {$eq: true}}, query))
       .sort({date: -1})
       .toArray()
 

@@ -33,9 +33,14 @@
   }
 
   function pikaday(){
+    let el = form.querySelector('.date-input')
     new window.Pikaday({
-      field: form.querySelector('.date-input'),
-      showTime: true
+      field: el,
+      showTime: true,
+      toString: date => {
+        el.setAttribute('true-value', date)
+        return window.moment(date).format('MMMM Do, YYYY h:mma [GMT]Z')
+      }
     })
   }
 
@@ -46,7 +51,7 @@
       let info = form.querySelector('.info')
 
       info.querySelectorAll('input[type="text"]').forEach(el => {
-        race[el.getAttribute('data-prop-name')] = el.value
+        race[el.getAttribute('data-prop-name')] = el.getAttribute('true-value') || el.value
       })
 
       info.querySelectorAll('input[type="checkbox"]').forEach(el => {
@@ -68,8 +73,8 @@
   }
 
   function troubleshoot(race){
-    // ISO format date, use a placeolder date if none provided
-    race.date = new Date(race.date ? race.date : '2020-01-01').toISOString()
+    // ISO format date, use a placeholder date if none provided
+    race.date = new Date(race.date ? race.date : '2020-01-01').toUTCString()
 
     // Remove whitespace from slug
     race.slug = race.slug.replace(/ /g,'-')

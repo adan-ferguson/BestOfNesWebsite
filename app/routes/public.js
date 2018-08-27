@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const races = require('../models/races.js')
+const users = require('../models/users.js')
 const marathons = require('../models/marathons.js')
 const twitch = require('../twitch.js')
 
@@ -24,7 +25,7 @@ router.get('/marathons', (req, res) => {
 router.get('/races', async (req, res) => {
   res.render('races', {
     title: 'Races',
-    races: await races.list()
+    races: await races.list({public: {$eq: true}})
   })
 })
 
@@ -42,7 +43,7 @@ router.get('/races/:id', async (req, res) => {
 
   let race = await races.get(req.params.id)
 
-  if(!race){
+  if(!race || (!race.public && !users.isAdmin(req.session.username))){
     return res.redirect('/races')
   }
 
@@ -50,6 +51,7 @@ router.get('/races/:id', async (req, res) => {
 
   res.render('race', {
     title: 'Race',
+    id: req.params.id,
     race: race,
     signupsOpen: races.areSignupsOpen(race),
     signedUp: races.isParticipant(race, req.session.username)

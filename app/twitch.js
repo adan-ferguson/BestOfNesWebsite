@@ -1,5 +1,6 @@
 const request = require('request-promise-native')
 const config = require('./config.js')
+const users = require('./models/users.js')
 const guid = require('uuid/v4')
 
 const twitch = {
@@ -41,7 +42,8 @@ const twitch = {
     return  {
       username: username || null,
       loginLink: twitch.getLoginLink(id),
-      stateID: id
+      stateID: id,
+      isAdmin: users.isAdmin(username)
     }
   }
 }

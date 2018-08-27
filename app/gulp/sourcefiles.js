@@ -3,6 +3,7 @@ const path = require('path')
 module.exports = {
   getJS: (prependDir = '') => {
     return [
+      'vendor/moment.js',
       'vendor/**/*.js',
       'app/index.js',
       'app/**/index.js',

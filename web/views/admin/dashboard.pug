@@ -2,15 +2,18 @@ extends ../templates/admin.pug
 
 block content
     div.races
-        | Races
-        a(href="admin/races/new")
+        h1 Races
+        a.btn.btn-primary.create-new(href="admin/races/new")
             | Create new
+        hr
         div.upcoming
-            h1 Upcoming
+            h3 Upcoming
+        hr
         div.running
-            h1 Running
+            h3 Running
+        hr
         div.finished
-            h1 Finished
+            h3 Finished
     template
         .race.row
             span.date.date-to-convert.col-6.col-sm-2

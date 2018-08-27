@@ -5,20 +5,21 @@ block content
         .featured.material-shadow
             .centerer
                 img.bestofneslogo(src='/static/images/bestofnessquare.png')
-            .name Best of NES Marathon 2018
-            .date Date TBD
-            a.social.twitch(target='blank' href='http://twitch.tv/bestofnes')
-                i.fab.fa-twitch
-                span BestOfNES
-            .content
-                .description Once a year we gather the best players from around the world to show off the best games the NES has to offer.
-                div Status: Announced, signups not open.
-                div
-                    | Follow on Twitter
-                    |
-                    a(href='https://twitter.com/bestofnes' target='blank') @BestOfNES
-                    |
-                    | for updates and announcements.
+            .event-details
+                .name Best of NES Marathon 2018
+                .date Date TBD
+                a.social.twitch(target='blank' href='http://twitch.tv/bestofnes')
+                    i.fab.fa-twitch
+                    span BestOfNES
+                .content
+                    .description Once a year we gather the best players from around the world to show off the best games the NES has to offer.
+                    div Status: Announced, signups not open.
+                    div
+                        | Follow on Twitter
+                        |
+                        a(href='https://twitter.com/bestofnes' target='blank') @BestOfNES
+                        |
+                        | for updates and announcements.
         .past-marathons
             h3 Past Marathons
             each marathon in pastMarathons

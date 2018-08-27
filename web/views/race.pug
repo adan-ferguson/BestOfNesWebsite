@@ -2,7 +2,14 @@ extends templates/main.pug
 
 block content
     #race.container
-        .material-shadow.games
+        .material-shadow
+            .event-details
+                .name #{race.name}
+                .date.date-to-convert #{race.date}
+                .description #{race.description}
+                if _locals.twitch.isAdmin
+                    a.btn.btn-primary.edit(href='/admin/races' + id) Edit
+        .material-shadow
             nav
                 ul.nav.nav-tabs
                     li.nav-item
@@ -33,7 +40,7 @@ block content
                     | and enter the race on the day it happens.
                 .participants-list
                     each p in race.participants
-                        a.participant(href=p.link) #{p.username}
+                        a.participant(href=p.streamLink) #{p.username}
                 if signedUp
                     Span You are signed up for this race!
                 else
@@ -50,6 +57,7 @@ block content
 block postscript
     script.
         BestOfNes.Race.init()
+        BestOfNes.Utils.convertDates()
     if signupsOpen && !signedUp
         script.
             BestOfNes.Race.setupSignupLink()

@@ -1,13 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const config = require('../config.js')
 const races = require('../models/races.js')
+const users = require('../models/users.js')
 
 router.use((req, res, next) => {
 
-  let user = req.session.username
-
-  if(!user || config.accounts.admins.indexOf(user) === -1){
+  if(!users.isAdmin(req.session.username)){
     if(req.method === 'GET'){
       res.redirect('/')
     }else{

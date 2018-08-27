@@ -64,7 +64,7 @@
       return
     }
 
-    let response = checkAccessToken()
+    let response = await checkAccessToken()
 
     let twitchInfo = await response.json()
     twitchNav.update(twitchInfo)
@@ -106,6 +106,12 @@
 
     _loggedIn(){
       this._showOption('loggedIn')
+
+      if(!this.twitchInfo.isAdmin){
+        let adminLink = this.link.querySelector('.admin')
+        adminLink.parentNode.removeChild(adminLink)
+      }
+
       this.link.querySelector('.my-channel').href = 'https://twitch.tv/' + this.twitchInfo.username
       this.link.querySelector('.name').textContent = this.twitchInfo.username
     }
