@@ -56,7 +56,7 @@ const races = {
     return result.deletedCount === 1
   },
 
-  addParticipant: async function(id, username){
+  addParticipant: async function(id, username, streamLink = ('https://twitch.tv/' + username)){
 
     let race = await races.get(id)
     if(!race.participants) {
@@ -67,7 +67,10 @@ const races = {
       return false
     }
 
-    race.participants.push(username)
+    race.participants.push({
+      username: username,
+      streamLink: streamLink
+    })
     let result = await db.conn().collection('races').save(race)
     return result.result.ok === 1
   },
@@ -79,7 +82,7 @@ const races = {
     }
 
     let u = username.toLowerCase()
-    return race.participants.find(p => p.toLowerCase() === u.toLowerCase())
+    return race.participants.find(p => p.username.toLowerCase() === u.toLowerCase())
   },
 
   areSignupsOpen: function(race){

@@ -31,11 +31,13 @@ block content
                     a(href='http://www.speedrunslive.com/channel/') SpeedRunsLive IRC
                     |
                     | and enter the race on the day it happens.
-                .participants-list list
+                .participants-list
+                    each p in race.participants
+                        a.participant(href=p.link) #{p.username}
                 if signedUp
                     Span You are signed up for this race!
                 else
-                    a.race-sign-up
+                    a.race-sign-up.social.twitch
                         i.fab.fa-twitch
                         span Sign Up with your Twitch Account
         else
