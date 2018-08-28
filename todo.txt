@@ -2,36 +2,42 @@ Home page
 - Show stream on homepage if it's up
 
 Race page
-+ Show data
-+ Show participants
-- Show results if finished
-+ Don't show if "visible to public" not checked
-- Show the description at the top
-
-Participants
-- Allow people to sign up with twitch
-- Allow people
+* Show results if finished
 
 Admin
-- Remove user if possible
-- Set user's time / vod
-- Try with a non-admin user, make sure can't access anything
+* List participants
+* add/remove/edit participants
+* Set user's time / vod
 
 General
 - Timezone issues
 - favicon
 - Make sure titles are all set correctly
-- Cross browser
+* Cross browser
 
 --- Server ---
 - Message when DB is down/not running
-- HTTPS/SSL
 - CSS mimetype issue
-- Make sure production mode works
+* Make sure production mode works
+* Put sample up on AWS server
++ HTTPS/SSL
+- Forever
+
+--- Live Server ---
+- Get bestofnes domain
+- Setup HTTPS/SSL for that domain
+
 
 ============================================================
 --- 2018-08-26 ---
+Race page
++ Show data
++ Show participants
++ Don't show if "visible to public" not checked
++ Show the description at the top
 
+Participants
++ Allow people to sign up with twitch
 
 --- 2018-08-25 ---
 Home page

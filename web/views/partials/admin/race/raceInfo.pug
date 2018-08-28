@@ -1,0 +1,28 @@
+.form-group
+    label Name
+    input.form-control(data-prop-name='name' type='text' placeholder='Enter event name here')
+.form-group
+    label URL Name
+    .input-group
+        .input-group-prepend
+            span.input-group-text bestofnes.com/races/
+        input.form-control(data-prop-name='slug' type='text' placeholder='my-cool-race')
+.form-group
+    label Description
+    textarea.form-control(data-prop-name='description' placeholder='Description of event')
+.form-group
+    label Date
+    input.date-input.form-control(data-prop-name='date' readonly='readonly' type='text' placeholder='Event date')
+.form-group.form-check
+    input.form-check-input(data-prop-name='public' type='checkbox')
+    label.form-check-label Visible to Public
+    br
+    small.font-text.text-muted Don't check this until you're ready for everyone to see it.
+.form-group.form-check
+    input.form-check-input(data-prop-name='finished' type='checkbox')
+    label.form-check-label Finished
+    br
+    small.font-text.text-muted Check this once the race is finished (so it will appear in previous races listing).
+.form-group
+    label VOD
+    input.form-control(data-prop-name='link' type='text' placeholder="Add link to video of the race after it's completed")
