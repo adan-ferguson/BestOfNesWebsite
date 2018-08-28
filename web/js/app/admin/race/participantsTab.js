@@ -25,7 +25,21 @@
   }
 
   ParticipantsTab.getData = function(){
-    return participants.map(p => p.data)
+    let format = 'hh:mm:ss.SS'
+    return participants
+      .map(p => p.data)
+      .sort((p1, p2) => {
+        let m1 = window.moment(p1.time, format).valueOf()
+        let m2 = window.moment(p2.time, format).valueOf()
+
+        if(isNaN(m1)){
+          m1 = Number.MAX_VALUE
+        }else if(isNaN(m2)){
+          m2 = Number.MAX_VALUE
+        }
+
+        return m1 - m2
+      })
   }
 
   function addParticipant(p){
@@ -38,7 +52,6 @@
 
       if(!data.id){
         data.id = BestOfNes.Utils.guid()
-        data.newId = true
       }
 
       this.data = data
@@ -106,6 +119,7 @@
     }
 
     delete(){
+      this.el.parentElement.removeChild(this.el)
 
     }
   }

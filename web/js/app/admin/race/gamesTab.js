@@ -70,8 +70,7 @@
     addButton.addEventListener('click', () => {
 
       let game = {
-        id: BestOfNes.Utils.guid(),
-        isNew: true
+        id: BestOfNes.Utils.guid()
       }
 
       games.push(game)

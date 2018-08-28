@@ -19,7 +19,15 @@
         let newData = {}
 
         this.fields.forEach(el => {
-          newData[el.getAttribute('data-prop')] = el.value
+
+          let v = el.value
+          if(el.getAttribute('data-format') === 'time'){
+            if(isNaN(window.moment(v, 'hh:mm:ss.SS').valueOf())){
+              v = ''
+            }
+          }
+
+          newData[el.getAttribute('data-prop')] = v
         })
 
         this.close({
