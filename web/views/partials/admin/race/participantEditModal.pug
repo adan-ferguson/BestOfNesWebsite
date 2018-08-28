@@ -6,20 +6,17 @@
                 button.close(type='button')
                     span &times;
             .modal-body
-                //.form-group
-                //    label Game
-                //    input.form-control(type='text' data-prop='name')
-                //.form-group
-                //    label Goal
-                //    input.form-control(type='text' data-prop='goal')
-                //.form-group
-                //    label Timing ends when...
-                //    input.form-control(type='text' data-prop='timing')
-                //.form-group
-                //    label Rules/Clarifications
-                //    textarea.form-control(data-prop='rules')
-                //.form-group
-                //    label Resources
-                //    textarea.form-control(data-prop='resources')
+                .form-group
+                    label Username
+                    input.form-control(type='text' data-prop='username')
+                .form-group
+                    label Stream Link
+                    input.form-control(type='text' data-prop='streamLink')
+                .form-group
+                    label Time
+                    input.form-control(type='text' data-prop='time')
+                .form-group
+                    label VOD
+                    input.form-control(type='text' data-prop='vod')
             .modal-footer
                 button.btn.btn-primary.save(type='button') Save

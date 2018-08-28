@@ -3,17 +3,17 @@
   const GamesTab = {}
   BestOfNes.Admin.Race.GamesTab = GamesTab
 
-  let form
+  let addButton
   let modal
   let games
   let list
 
-  GamesTab.init = function(_form, _games){
+  GamesTab.init = function(section, _games){
 
-    form = _form
     games = _games
 
-    list = form.querySelector('.games-list')
+    addButton = section.querySelector('.add-game')
+    list = section.querySelector('.games-list')
     modal = new Modal(document.querySelector('.game-edit-modal'))
 
     updateGames()
@@ -67,7 +67,7 @@
       }
     })
 
-    form.querySelector('button.add-game').addEventListener('click', () => {
+    addButton.addEventListener('click', () => {
 
       let game = {
         id: BestOfNes.Utils.guid(),

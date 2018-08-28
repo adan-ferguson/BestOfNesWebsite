@@ -48,19 +48,35 @@
       .game
         padding: 3px
 
-        .delete-dropdown
-          button
-            border-left: none
-            border-top-left-radius: 0
-            border-bottom-left-radius: 0
-          .dropdown-menu
-            right: 0
-            left: initial
-
     button.add-game
       margin-top: 10px
 
-  .game-edit-modal
+    .input-group
+      margin-bottom: 5px
+
+  .field-row
+    width: 100%
+    padding: 10px
+    position: relative
+
+    &:not(:last-child)
+      border-bottom: 1px solid #AAA
+
+    a, span
+      display: inline-block
+      padding-top: 12px
+      padding-right: 20px
+
+      &.hidden
+        display: none
+
+    button
+      margin-left: 5px
+
+    .right
+      float: right
+
+  .modal
     background-color: #7777
 
     .modal-dialog
@@ -69,3 +85,9 @@
     .modal-content
       padding: 15px
 
+  .delete-dropdown
+    display: inline-block
+
+    .dropdown-menu
+      right: 0
+      left: initial

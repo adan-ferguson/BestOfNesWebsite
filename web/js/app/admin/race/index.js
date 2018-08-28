@@ -29,7 +29,9 @@
     submit()
     tabs()
 
-    Race.GamesTab.init(form, race.games)
+    //gamesTab =  Race.GamesTab
+    //gamesTab.init(form.querySelector('section.games'), race.games)
+    Race.ParticipantsTab.init(form.querySelector('section.participants'), race.participants)
   }
 
   function tabs(){
@@ -67,6 +69,9 @@
       info.querySelectorAll('input[type="checkbox"]').forEach(el => {
         race[el.getAttribute('data-prop-name')] = el.checked
       })
+
+      //race.games = Race.GamesTab.getData()
+      race.participants = Race.ParticipantsTab.getData()
 
       troubleshoot(race)
 
