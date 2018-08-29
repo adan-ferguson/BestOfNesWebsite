@@ -86,7 +86,7 @@ const races = {
   },
 
   areSignupsOpen: function(race){
-    return new Date(race.date) > new Date()
+    return !race.finished && new Date(race.date) > new Date()
   }
 }
 

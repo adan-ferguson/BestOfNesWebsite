@@ -47,10 +47,18 @@ block content
                     a.race-sign-up.social.twitch
                         i.fab.fa-twitch
                         span Sign Up with your Twitch Account
-        else
+        else if finished
             .material-shadow.results
                 h2 Results
-                .results-list Results List
+                .participants-list
+                    each p in race.participants
+                        .participant.clearfix
+                            span.place
+                            span.name #{p.username}
+                            if p.vod
+                                a.time.right(href=p.vod) #{p.time || 'VOD'}
+                            else
+                                span.time.right #{p.time}
                 if race.link
                     a(href=race.link) View replay of the race
 

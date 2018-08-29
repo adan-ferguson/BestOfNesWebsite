@@ -54,6 +54,7 @@ router.get('/races/:id', async (req, res) => {
     id: req.params.id,
     race: race,
     signupsOpen: races.areSignupsOpen(race),
+    finished: race.finished,
     signedUp: races.isParticipant(race, req.session.username)
   })
 })
