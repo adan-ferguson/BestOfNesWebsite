@@ -29,7 +29,7 @@
     submit()
     tabs()
 
-    //Race.GamesTab.init(form.querySelector('section.games'), race.games)
+    Race.GamesTab.init(form.querySelector('section.games'), race.games)
     Race.ParticipantsTab.init(form.querySelector('section.participants'), race.participants)
   }
 
@@ -74,7 +74,7 @@
 
       troubleshoot(race)
 
-      await fetch('', {
+      let result = await fetch('', {
         headers: {
           race: JSON.stringify(race)
         },
@@ -82,7 +82,9 @@
         credentials: 'include'
       })
 
-      window.location = '/admin'
+      let json = await result.json()
+
+      window.location = '/admin/races/' + json.id
     })
   }
 

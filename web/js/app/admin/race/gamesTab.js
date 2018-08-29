@@ -16,9 +16,13 @@
 
     _games.forEach(p => addGame(p))
 
-    section.querySelector('.add-game').addEventListener('click', () => {
+    section.querySelector('.add-game').addEventListener('click', async () => {
       let g = new Game()
-      g.edit()
+      let result = await g.edit()
+      if(result.saved){
+        games.push(g)
+        g.addTo(list)
+      }
     })
   }
 
@@ -27,146 +31,63 @@
     return data
   }
 
-  function addGame(g){
-    new Game(g).add()
+  function addGame(data){
+    let g = new Game(data)
+    games.push(g)
+    g.addTo(list)
   }
 
-  class Game {
+  class Game extends Race.Row {
 
     constructor(data = {}){
-
-      if(!data.id){
-        data.id = BestOfNes.Utils.guid()
-      }
-
-      this.data = data
+      let template = document.querySelector('template').content.querySelector('.game')
+      super(data, template)
     }
 
+    addTo(list){
+      super.addTo(list)
+      this.el.querySelector('.game-number').textContent = games.length
+    }
 
-  }
+    async edit(){
+      return await super.edit(new Race.Modal(modal))
+    }
 
+    delete(){
+      super.delete()
+      let i = games.indexOf(this)
 
-  function setupListeners(){
+      if(i > -1){
+        games.splice(i, 1)
+      }
+    }
 
-    list.addEventListener('click', e => {
+    up(){
+      let index = games.indexOf(this)
 
-      let target = e.target
-
-      if(target.nodeName !== 'BUTTON'){
+      if(index === 0){
         return
       }
 
-      let targetGameEl = target
+      let prev = this.el.previousSibling
+      this.el.parentNode.insertBefore(this.el, prev)
 
-      while(targetGameEl && !targetGameEl.classList.contains('game')){
-        targetGameEl = targetGameEl.parentNode
-      }
+      games.splice(index, 1)
+      games.splice(index - 1, 0, this)
 
-      if(!targetGameEl){
+      prev.querySelector('.game-number').textContent = index + 1
+      this.el.querySelector('.game-number').textContent = index
+    }
+
+    down(){
+      let index = games.indexOf(this)
+
+      if(index === games.length - 1) {
         return
       }
 
-      let targetGame = getGame(targetGameEl)
-
-      if(target.classList.contains('move-up')){
-        move(targetGame, -1)
-      }else if(target.classList.contains('move-down')){
-        move(targetGame, 1)
-      }else if(target.classList.contains('edit')){
-        edit(targetGame)
-      }else if(target.classList.contains('confirm-delete')){
-        deleteGame(targetGame)
-      }
-    })
-
-    addButton.addEventListener('click', () => {
-
-      let game = {
-        id: BestOfNes.Utils.guid()
-      }
-
-      games.push(game)
-      updateGames()
-    })
-
-    modal.onSave = updateGames
-  }
-
-  function makeGameEl(game){
-    let gameTemplate = document.querySelector('template')
-    let gameEl = gameTemplate.content.querySelector('.game').cloneNode(true)
-    gameEl.setAttribute('data-game-id', game.id)
-    gameEl.querySelector('.game-number').textContent = game.index + 1
-    gameEl.querySelector('.name').value = game.name || ''
-    list.appendChild(gameEl)
-
-    new window.Dropdown(gameEl.querySelector('.delete-dropdown'))
-  }
-
-  function move(game, direction){
-
-    // Don't do anything if at end
-    if(direction < 0 && game.index === 0){
-      return
-    }
-    if(direction > 0 && game.index === games.length - 1){
-      return
-    }
-
-    games.splice(game.index, 1)
-    games.splice(game.index + direction, 0, game)
-    updateGames()
-  }
-
-  function edit(game){
-    modal.show(game)
-  }
-
-  function deleteGame(game){
-    games.splice(game.index, 1)
-    updateGames()
-  }
-
-  class Modal {
-    constructor(el){
-      this.el = el
-      this.fields = el.querySelectorAll('.form-control')
-
-      let close = el.querySelector('button.close')
-      let save = el.querySelector('button.save')
-
-      close.addEventListener('click', () => {
-        this.hide()
-      })
-
-      save.addEventListener('click', () => {
-        this.save()
-        this.hide()
-      })
-    }
-
-    show(game){
-      this.game = game
-
-      this.fields.forEach(el => {
-        el.value = game[el.getAttribute('data-prop')] || ''
-      })
-
-      this.el.style.display = 'block'
-    }
-
-    hide(){
-      this.el.style.display = 'none'
-    }
-
-    save(){
-      this.fields.forEach(el => {
-        this.game[el.getAttribute('data-prop')] = el.value
-      })
-
-      if(this.onSave){
-        this.onSave()
-      }
+      games[index + 1].up()
     }
   }
+
 })()

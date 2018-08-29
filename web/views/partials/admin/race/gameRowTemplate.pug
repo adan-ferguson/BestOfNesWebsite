@@ -1,11 +1,11 @@
 .game.field-row.clearfix
-    span.input-group-text Game #
+    span Game #
         span.game-number 0
     span.field(data-field-name='name')
-    button.right.btn.btn-outline-secondary.move-up(type='button' data-onclick='up') Up
-    button.right.btn.btn-outline-secondary.move-down(type='button' data-onclick='down') Down
-    button.right.btn.btn-outline-primary(type='button' data-onclick='edit') Edit
     div.right.delete-dropdown
         button.btn.btn-outline-danger.delete.dropdown-toggle(type='button') Delete
         .dropdown-menu
             button.dropdown-item(type='button' data-onclick='delete') Confirm delete game
+    button.right.btn.btn-outline-primary(type='button' data-onclick='edit') Edit
+    button.right.btn.btn-outline-secondary.move-down(type='button' data-onclick='down') Down
+    button.right.btn.btn-outline-secondary.move-up(type='button' data-onclick='up') Up
