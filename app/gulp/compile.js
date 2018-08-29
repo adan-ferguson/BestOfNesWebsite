@@ -11,19 +11,28 @@ const sourcefiles = require('./sourcefiles.js')
 
 async function writeJS(gulp, mode){
 
-  const pumpArray = [gulp.src(sourcefiles.getJS(directories.SOURCES.JS), {base: directories.SOURCES.JS})]
+  let files = sourcefiles.getJS(directories.SOURCES.JS)
 
-  if(mode === 'production'){
-    pumpArray.push(concat('scripts.min.js'))
-    pumpArray.push(babel({
-      presets: ['env']
-    }))
-    pumpArray.push(uglify())
-    pumpArray.push(rev())
+  for(let i = 0; i < files.length; i++){
+    let fileObj = files[i]
+    const pumpArray = [gulp.src(fileObj.files, {base: directories.SOURCES.JS})]
+
+    if(mode === 'production'){
+
+      if(fileObj.transpile){
+        pumpArray.push(babel({
+          presets: ['env']
+        }))
+      }
+
+      pumpArray.push(concat(fileObj.name + '.min.js'))
+      pumpArray.push(uglify())
+      pumpArray.push(rev())
+    }
+
+    pumpArray.push(gulp.dest(directories.COMPILED.JS))
+    await pumpIt(pumpArray)
   }
-
-  pumpArray.push(gulp.dest(directories.COMPILED.JS))
-  await pumpIt(pumpArray)
 }
 
 async function writeStyles(gulp, mode){

@@ -9,7 +9,9 @@ function injectIntoViews(gulp, mode){
   let cssFiles
 
   if(mode === 'production'){
-    jsFiles = [path.join(directories.COMPILED.JS, '*.js')]
+    jsFiles = sourcefiles.getJS().map(sourcefiles => {
+      return path.join(directories.COMPILED.JS, sourcefiles.name + '*.js')
+    })
     cssFiles = [path.join(directories.COMPILED.STYLES, '*.css')]
   }else{
     jsFiles = sourcefiles.getJS(directories.COMPILED.JS)

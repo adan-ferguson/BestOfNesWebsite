@@ -1,4 +1,3 @@
 (function(){
-  const Admin = {}
-  BestOfNes.Admin = Admin
+  BestOfNes.Admin = {}
 })()

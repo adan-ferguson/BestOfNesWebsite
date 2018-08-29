@@ -10,7 +10,6 @@ General
 --- Server ---
 - Message when DB is down/not running
 - CSS mimetype issue
-* Make sure production mode works
 * Put sample up on AWS server
 - Forever
 
@@ -33,6 +32,7 @@ Admin
 
 Server
 + HTTPS/SSL
++ Make sure production mode works
 
 --- 2018-08-26 ---
 Race page

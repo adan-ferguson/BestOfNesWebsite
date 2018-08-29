@@ -1,1 +1,3 @@
-window.BestOfNes = {}
+(function(){
+  window.BestOfNes = {}
+})()
