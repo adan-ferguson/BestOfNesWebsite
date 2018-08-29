@@ -18,7 +18,7 @@ block content
         section.participants
             .participants-list
             button.btn.btn-primary.add-participant(type='button') + Add Participant
-        button.save.btn.btn-info(type='submit') Save Changes
+        button.save.btn.btn-info(type='submit') Save & View
         small.last-updated #{race.lastUpdated ? "Last updated - " + new Date(race.lastUpdated) : ""}
     include ../partials/admin/race/gameEditModal
     include ../partials/admin/race/participantEditModal

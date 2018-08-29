@@ -1,16 +1,6 @@
 Home page
 - Show stream on homepage if it's up
 
-Race page
-+ Show results if finished
-
-Admin
-+ List participants
-+ add/remove/edit participants
-+ Set user's time / vod
-* Unsaved changes warning
-* Fix games tab
-
 General
 - Timezone issues
 - favicon
@@ -22,7 +12,6 @@ General
 - CSS mimetype issue
 * Make sure production mode works
 * Put sample up on AWS server
-+ HTTPS/SSL
 - Forever
 
 --- Live Server ---
@@ -32,7 +21,18 @@ General
 
 ============================================================
 --- 2018-08-27 ---
+Race page
++ Show results if finished
 
+Admin
++ List participants
++ add/remove/edit participants
++ Set user's time / vod
++ Unsaved changes warning
++ Fix games tab
+
+Server
++ HTTPS/SSL
 
 --- 2018-08-26 ---
 Race page

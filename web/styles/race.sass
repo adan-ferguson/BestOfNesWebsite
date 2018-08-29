@@ -17,13 +17,13 @@
     .goal:before
       content: ''
 
-    .timing:before
+    .timing:not(:empty):before
       content: 'Timing ends when '
 
-    .rules:before
+    .rules:not(:empty):before
       content: 'Rules/Clarifications: '
 
-    .resources:before
+    .resources:not(:empty):before
       content: 'Resources: '
 
     > div:empty
