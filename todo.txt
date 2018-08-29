@@ -2,12 +2,14 @@ Home page
 - Show stream on homepage if it's up
 
 Race page
-* Show results if finished
++ Show results if finished
 
 Admin
-* List participants
-* add/remove/edit participants
-* Set user's time / vod
++ List participants
++ add/remove/edit participants
++ Set user's time / vod
+* Unsaved changes warning
+* Fix games tab
 
 General
 - Timezone issues
@@ -29,6 +31,9 @@ General
 
 
 ============================================================
+--- 2018-08-27 ---
+
+
 --- 2018-08-26 ---
 Race page
 + Show data

@@ -9,7 +9,7 @@
   let participants = []
   let list
 
-  ParticipantsTab.init = function(section, _participants){
+  ParticipantsTab.init = function(section, _participants = []){
 
     list = section.querySelector('.participants-list')
     modal = document.querySelector('.participant-edit-modal')
@@ -26,8 +26,7 @@
 
   ParticipantsTab.getData = function(){
     let format = 'hh:mm:ss.SS'
-    return participants
-      .map(p => p.data)
+    let data = participants.map(p => p.data)
       .sort((p1, p2) => {
         let m1 = window.moment(p1.time, format).valueOf()
         let m2 = window.moment(p2.time, format).valueOf()
@@ -40,6 +39,14 @@
 
         return m1 - m2
       })
+
+    data.forEach((p, i) => {
+      if(p.time){
+        p.place = BestOfNes.Utils.toOrdinal(1 + i)
+      }
+    })
+
+    return data
   }
 
   function addParticipant(p){

@@ -51,9 +51,9 @@ block content
             .material-shadow.results
                 h2 Results
                 .participants-list
-                    each p in race.participants
+                    each p, i in race.participants
                         .participant.clearfix
-                            span.place
+                            span.place #{p.place}
                             span.name #{p.username}
                             if p.vod
                                 a.time.right(href=p.vod) #{p.time || 'VOD'}
