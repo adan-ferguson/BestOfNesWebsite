@@ -16,11 +16,13 @@
 
     _participants.forEach(p => addParticipant(p))
 
-    section.querySelector('.add-participant').addEventListener('click', () => {
-
+    section.querySelector('.add-participant').addEventListener('click', async () => {
       let p = new Participant()
-
-      p.edit()
+      let result = await p.edit()
+      if(result.saved){
+        participants.push(p)
+        p.addTo(list)
+      }
     })
   }
 
@@ -49,85 +51,30 @@
     return data
   }
 
-  function addParticipant(p){
-    new Participant(p).add()
+  function addParticipant(data){
+    let p = new Participant(data)
+    participants.push(p)
+    p.addTo(list)
   }
 
-  class Participant {
+  class Participant extends BestOfNes.Admin.Race.Row {
 
     constructor(data = {}){
-
-      if(!data.id){
-        data.id = BestOfNes.Utils.guid()
-      }
-
-      this.data = data
-    }
-
-    add(){
-      participants.push(this)
-
-      let template = document.querySelector('template')
-      this.el = template.content.querySelector('.participant').cloneNode(true)
-
-      this.update()
-      this.el.querySelector('.edit').addEventListener('click', () => this.edit())
-      this.el.querySelector('.confirm-delete').addEventListener('click', () => this.delete())
-      new window.Dropdown(this.el.querySelector('.delete-dropdown'))
-
-      list.appendChild(this.el)
-      this.added = true
-    }
-
-    update(){
-      let fields = this.el.querySelectorAll('.field')
-      for(let i = 0; i < fields.length; i++){
-        let f = fields[i]
-        let name = f.getAttribute('data-field-name')
-        let link = f.getAttribute('data-field-link')
-        let nameData = this.data[name]
-        let linkData = this.data[link]
-
-        if(!nameData && !linkData){
-          f.classList.add('hidden')
-          continue
-        }
-
-        f.classList.remove('hidden')
-
-        if(name){
-          f.textContent = nameData
-        }
-
-        if(link){
-          if(!linkData){
-            f.removeAttribute('href')
-          }else{
-            f.href = linkData
-          }
-        }
-      }
+      let template = document.querySelector('template').content.querySelector('.participant')
+      super(data, template)
     }
 
     async edit(){
-      let result = await new Race.Modal(modal).show(this.data)
-
-      if(!result.saved) {
-        return
-      }
-
-      this.data = result.data
-
-      if(!this.added){
-        this.add()
-      }else{
-        this.update()
-      }
+      return await super.edit(new Race.Modal(modal))
     }
 
     delete(){
-      this.el.parentElement.removeChild(this.el)
+      super.delete()
+      let i = participants.indexOf(this)
 
+      if(i > -1){
+        participants.splice(i, 1)
+      }
     }
   }
 

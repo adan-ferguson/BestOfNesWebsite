@@ -1,14 +1,11 @@
-template
-    .input-group.game
-        .input-group-prepend
-            span.input-group-text Game #
-                span.game-number 0
-        input.name.form-control(type='text' readonly)
-        .input-group-append
-            button.btn.btn-outline-secondary.move-up(type='button') Up
-            button.btn.btn-outline-secondary.move-down(type='button') Down
-            button.btn.btn-outline-primary.edit(type='button') Edit
-            div.delete-dropdown
-                button.btn.btn-outline-danger.delete.dropdown-toggle(type='button') Delete
-                .dropdown-menu
-                    button.dropdown-item.confirm-delete Confirm delete game
+.game.field-row.clearfix
+    span.input-group-text Game #
+        span.game-number 0
+    span.field(data-field-name='name')
+    button.right.btn.btn-outline-secondary.move-up(type='button' data-onclick='up') Up
+    button.right.btn.btn-outline-secondary.move-down(type='button' data-onclick='down') Down
+    button.right.btn.btn-outline-primary(type='button' data-onclick='edit') Edit
+    div.right.delete-dropdown
+        button.btn.btn-outline-danger.delete.dropdown-toggle(type='button') Delete
+        .dropdown-menu
+            button.dropdown-item(type='button' data-onclick='delete') Confirm delete game

@@ -1,6 +1,6 @@
 (function(){
 
-  const Modal = class {
+  BestOfNes.Admin.Race.Modal = class {
     constructor(el){
       this.el = el
       this.fields = el.querySelectorAll('.form-control')
@@ -61,5 +61,4 @@
     }
   }
 
-  BestOfNes.Admin.Race.Modal = Modal
 })()

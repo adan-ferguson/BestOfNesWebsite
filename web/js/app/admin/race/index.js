@@ -29,8 +29,7 @@
     submit()
     tabs()
 
-    //gamesTab =  Race.GamesTab
-    //gamesTab.init(form.querySelector('section.games'), race.games)
+    //Race.GamesTab.init(form.querySelector('section.games'), race.games)
     Race.ParticipantsTab.init(form.querySelector('section.participants'), race.participants)
   }
 
@@ -70,7 +69,7 @@
         race[el.getAttribute('data-prop-name')] = el.checked
       })
 
-      //race.games = Race.GamesTab.getData()
+      race.games = Race.GamesTab.getData()
       race.participants = Race.ParticipantsTab.getData()
 
       troubleshoot(race)
@@ -94,5 +93,4 @@
     // Remove whitespace from slug
     race.slug = race.slug.replace(/ /g,'-')
   }
-
 })()

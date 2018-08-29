@@ -1,38 +1,50 @@
 (function(){
 
+  const Race = BestOfNes.Admin.Race
+
   const GamesTab = {}
   BestOfNes.Admin.Race.GamesTab = GamesTab
 
-  let addButton
   let modal
-  let games
+  let games = []
   let list
 
-  GamesTab.init = function(section, _games){
+  GamesTab.init = function(section, _games = []){
 
-    games = _games
-
-    addButton = section.querySelector('.add-game')
     list = section.querySelector('.games-list')
-    modal = new Modal(document.querySelector('.game-edit-modal'))
+    modal = document.querySelector('.game-edit-modal')
 
-    updateGames()
-    setupListeners()
-  }
+    _games.forEach(p => addGame(p))
 
-  function getGame(gameEl){
-    return games.find(g => {
-      return g.id === gameEl.getAttribute('data-game-id')
+    section.querySelector('.add-game').addEventListener('click', () => {
+      let g = new Game()
+      g.edit()
     })
   }
 
-  function updateGames(){
-    list.innerHTML = ''
-    games.forEach((game, i) => {
-      game.index = i
-      makeGameEl(game)
-    })
+  GamesTab.getData = function(){
+    let data = games.map(p => p.data)
+    return data
   }
+
+  function addGame(g){
+    new Game(g).add()
+  }
+
+  class Game {
+
+    constructor(data = {}){
+
+      if(!data.id){
+        data.id = BestOfNes.Utils.guid()
+      }
+
+      this.data = data
+    }
+
+
+  }
+
 
   function setupListeners(){
 
