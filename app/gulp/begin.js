@@ -13,18 +13,21 @@ module.exports = async (gulp, options) => {
   inject(gulp, options.mode)
 
   watch(['web/js/**/*'], async () => {
+    cleanup('JS')
     await compile.writeJS(gulp, options.mode)
     inject(gulp, options.mode)
     log('Recompiled and injected JS')
   })
 
   watch(['web/styles/**/*'], async () => {
+    cleanup('STYLES')
     await compile.writeStyles(gulp, options.mode)
     inject(gulp, options.mode)
     log('Recompiled and injected CSS')
   })
 
   watch(['web/views/**/*'], {events: ['change']}, () => {
+    cleanup('VIEWS')
     inject(gulp, options.mode)
     log('Injected')
   })

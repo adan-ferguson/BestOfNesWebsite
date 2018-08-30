@@ -2,9 +2,13 @@ const fs = require('fs')
 const path = require('path')
 const directories = require('../directories.js')
 
-function cleanupDirectories(){
+function cleanup(name = null){
 
-  Object.values(directories.COMPILED).forEach(dir => cleanup(dir))
+  if(!name){
+    Object.values(directories.COMPILED).forEach(dir => cleanup(dir))
+  }else{
+    cleanup(directories.COMPILED[name])
+  }
 
   function cleanup(dir){
 
@@ -28,4 +32,4 @@ function cleanupDirectories(){
   }
 }
 
-module.exports = cleanupDirectories
+module.exports = cleanup
