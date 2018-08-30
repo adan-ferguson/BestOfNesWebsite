@@ -2,8 +2,14 @@ Home page
 - Show stream on homepage if it's up
 - Get text
 
+Admin
+- Allow banning of users
+
 Races
 - Put up old races
+- Times have leading zero
+- Allow users to set their own time + vod
+- Put participants in a tab
 
 General
 - Timezone issues

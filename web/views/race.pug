@@ -16,6 +16,8 @@ block content
                         .nav-link Goals
                     li.nav-item
                         .nav-link Detailed
+                    li.nav-item
+                        .nav-link Racers
             .sections
                 section.goals
                     each game, i in race.games
@@ -30,37 +32,41 @@ block content
                             .timing #{game.timing}
                             .rules #{game.rules}
                             .resources !{game.resources}
-        if signupsOpen
-            .material-shadow.participants
-                .description
-                    | Here are the runners who have signed up for this race so far.  Signup is optional.  Anyone who wants to join the race only needs to show up on the
-                    |
-                    a(href='http://www.speedrunslive.com/channel/') SpeedRunsLive IRC
-                    |
-                    | and enter the race on the day it happens.
-                .participants-list
-                    each p in race.participants
-                        a.participant(href=p.streamLink) #{p.username}
-                if signedUp
-                    Span You are signed up for this race!
-                else
-                    a.race-sign-up.social.twitch
-                        i.fab.fa-twitch
-                        span Sign Up with your Twitch Account
-        else if finished
-            .material-shadow.results
-                h2 Results
-                .participants-list
-                    each p, i in race.participants
-                        .participant.clearfix
-                            span.place #{p.place}
-                            span.name #{p.username}
-                            if p.vod
-                                a.time.right(href=p.vod) #{p.time || 'VOD'}
+                section.racers
+                    if !finished
+                        .participants
+                            .description
+                                | Here are the runners who have signed up for this race so far.  Signup is optional.  Anyone who wants to join the race only needs to show up on the
+                                |
+                                a(href='http://www.speedrunslive.com/channel/') SpeedRunsLive IRC
+                                |
+                                | and enter the race on the day it happens.
+                            .participants-list
+                                each p in race.participants
+                                    a.participant(href=p.streamLink) #{p.username}
+                            if signedUp
+                                Span You are signed up for this race!
                             else
-                                span.time.right #{p.time}
-                if race.link
-                    a(href=race.link) View replay of the race
+                                a.race-sign-up.social.twitch
+                                    i.fab.fa-twitch
+                                    span Sign Up with your Twitch Account
+                    else
+                        .results
+                            h2 Results
+                            .participants-list
+                                each p, i in race.participants
+                                    .participant.clearfix
+                                        span.place #{p.place}
+                                        if p.streamLink
+                                            a.name(href=p.streamLink) #{p.username}
+                                        else
+                                            span.name #{p.username}
+                                        if p.vod
+                                            a.time.right(href=p.vod) #{p.time || 'VOD'}
+                                        else
+                                            span.time.right #{p.time}
+                            if race.link
+                                a(href=race.link) View replay of the race
 
 block postscript
     script.
