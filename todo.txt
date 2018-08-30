@@ -1,11 +1,14 @@
 Home page
 - Show stream on homepage if it's up
+- Get text
+
+Races
+- Put up old races
 
 General
 - Timezone issues
 - favicon
 - Make sure titles are all set correctly
-* Cross browser
 
 --- Server ---
 - Message when DB is down/not running
@@ -14,11 +17,17 @@ General
 - Forever
 
 --- Live Server ---
-+ Get bestofnes domain
-- Setup HTTPS/SSL for that domain
-
+- Setup HTTPS/SSL for thebestofnes.com domain
 
 ============================================================
+--- 2018-08-28 ---
+General
++ Cross browser
+
+Live Server
++ Get bestofnes domain
+
+
 --- 2018-08-27 ---
 Race page
 + Show results if finished
