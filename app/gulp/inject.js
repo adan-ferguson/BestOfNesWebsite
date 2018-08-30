@@ -14,7 +14,8 @@ function injectIntoViews(gulp, mode){
     })
     cssFiles = [path.join(directories.COMPILED.STYLES, '*.css')]
   }else{
-    jsFiles = sourcefiles.getJS(directories.COMPILED.JS)
+    jsFiles = []
+    sourcefiles.getJS(directories.COMPILED.JS).forEach(sf => jsFiles.push(...sf.files))
     cssFiles = sourcefiles.getStyles(directories.COMPILED.STYLES)
   }
 

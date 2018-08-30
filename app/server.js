@@ -1,5 +1,6 @@
 const log = require('fancy-log')
 const express = require('express')
+const bodyParser = require('body-parser')
 
 const directories = require('./directories')
 const config = require('./config.js')
@@ -17,6 +18,7 @@ const app = express()
       secure: config.requireHttps
     }
   }))
+  .use(bodyParser.json())
   .set('view engine', 'pug')
   .set('views', directories.COMPILED.VIEWS)
   .use('/static', express.static(directories.STATIC))

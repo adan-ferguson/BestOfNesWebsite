@@ -20,6 +20,8 @@ block content
             button.btn.btn-primary.add-participant(type='button') + Add Participant
         button.save.btn.btn-info(type='submit') Save Changes
         small.last-updated #{race.lastUpdated ? "Last updated - " + new Date(race.lastUpdated) : ""}
+        hr
+        a.btn.btn-primary(href='/races/' + (race.slug || race._id) target='blank') View
     include ../partials/admin/race/gameEditModal
     include ../partials/admin/race/participantEditModal
 append templates

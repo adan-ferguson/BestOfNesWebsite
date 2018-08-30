@@ -48,7 +48,7 @@ router.get('/races/:id', async (req, res) => {
 })
 
 router.put('/races/:id', async (req, res) => {
-  let race = JSON.parse(req.headers.race)
+  let race = req.body
   await races.save(race)
   res.send({
     id: race.slug || race._id

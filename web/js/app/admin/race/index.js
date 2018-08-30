@@ -75,8 +75,10 @@
       troubleshoot(race)
 
       let result = await fetch('', {
+        body: JSON.stringify(race),
         headers: {
-          race: JSON.stringify(race)
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         },
         method: 'put',
         credentials: 'include'
