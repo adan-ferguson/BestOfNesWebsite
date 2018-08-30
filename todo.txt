@@ -14,7 +14,7 @@ General
 - Forever
 
 --- Live Server ---
-- Get bestofnes domain
++ Get bestofnes domain
 - Setup HTTPS/SSL for that domain
 
 

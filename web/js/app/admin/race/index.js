@@ -84,7 +84,7 @@
 
       let json = await result.json()
 
-      window.location = '/admin/races/' + json.id
+      window.location = '/races/' + json.id
     })
   }
 
