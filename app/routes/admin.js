@@ -18,7 +18,7 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
   return res.render('admin/dashboard', {
-    title: 'Admin Dashboard',
+    title: 'Admin - Dashboard',
     races: await races.list()
   })
 })

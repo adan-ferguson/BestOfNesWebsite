@@ -50,7 +50,7 @@ router.get('/races/:id', async (req, res) => {
   races.isParticipant(race, req.session.username)
 
   res.render('race', {
-    title: 'Race',
+    title: race.name,
     id: req.params.id,
     race: race,
     signupsOpen: races.areSignupsOpen(race),
