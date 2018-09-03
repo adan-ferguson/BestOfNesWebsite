@@ -1,6 +1,5 @@
 Home page
 - Show stream on homepage if it's up
-- Get text
 
 Admin
 - Allow banning of users
@@ -9,23 +8,26 @@ Races
 - Put up old races
 - Times have leading zero
 - Allow users to set their own time + vod
-- Put participants in a tab
 
 General
 - Timezone issues
-- favicon
-- Make sure titles are all set correctly
++ favicon
+* Make sure titles are all set correctly
 
 --- Server ---
 - Message when DB is down/not running
 - CSS mimetype issue
-* Put sample up on AWS server
-- Forever
-
---- Live Server ---
-- Setup HTTPS/SSL for thebestofnes.com domain
+- thebestofnes.com redirect
 
 ============================================================
+--- 2018-09-01 ---
+Races
++ Put participants in a tab
+
+Server
++ Put sample up on AWS server
++ Setup HTTPS/SSL for bestofnes.com domain
+
 --- 2018-08-28 ---
 General
 + Cross browser
