@@ -5,20 +5,22 @@ const guid = require('uuid/v4')
 
 const twitch = {
   getUsernameFromAccessToken: async (token) => {
-    let resp = await request({
-      method: 'get',
-      url: 'https://api.twitch.tv/helix/users',
-      headers: {
-        'Authorization': 'Bearer ' + token
-      },
-      json: true
-    })
-
-    if(resp.data.length > 0){
-      return resp.data[0].login
+    try {
+      let resp = await request({
+        method: 'get',
+        url: 'https://api.twitch.tv/helix/users',
+        headers: {
+          'Authorization': 'Bearer ' + token
+        },
+        json: true
+      })
+      if(resp.data.length > 0){
+        return resp.data[0].login
+      }
+      return null
+    } catch(e) {
+      return null
     }
-
-    return null
   },
   getLoginLink: (stateID) => {
 
