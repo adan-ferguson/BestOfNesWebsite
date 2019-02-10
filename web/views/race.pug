@@ -46,7 +46,7 @@ block content
                                     a.participant(href=p.streamLink) #{p.username}
                             if signedUp
                                 Span You are signed up for this race!
-                            else
+                            else if signupsOpen
                                 a.race-sign-up.social.twitch
                                     i.fab.fa-twitch
                                     span Sign Up with your Twitch Account
