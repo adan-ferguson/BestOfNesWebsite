@@ -10,7 +10,8 @@ const twitch = {
         method: 'get',
         url: 'https://api.twitch.tv/helix/users',
         headers: {
-          'Authorization': 'Bearer ' + token
+          Authorization: 'Bearer ' + token,
+          'client-id': config.twitch.clientID
         },
         json: true
       })
