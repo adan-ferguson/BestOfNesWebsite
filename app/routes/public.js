@@ -49,6 +49,9 @@ router.get('/races/:id', async (req, res) => {
 
   races.isParticipant(race, req.session.username)
 
+  let liveParticipants = await twitch.getStreamStatuses(race.participants.map(p => p.username))
+  race.participants.filter(p => liveParticipants.indexOf(p.username) > -1).forEach(p => p.live = true)
+
   res.render('race', {
     title: race.name,
     id: req.params.id,

@@ -45,6 +45,8 @@ block content
                             .participants-list
                                 each p in race.participants
                                     a.participant(href=p.streamLink) #{p.username}
+                                        if p.live
+                                            i.fa.fa-circle.now-live(title='Now Live')
                             if signedUp
                                 Span You are signed up for this race!
                             else if signupsOpen
