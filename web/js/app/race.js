@@ -7,7 +7,8 @@
     let raceEl = document.querySelector('#race')
     BestOfNes.Utils.tabize(
       raceEl.querySelectorAll('.nav-link'),
-      raceEl.querySelectorAll('section')
+      raceEl.querySelectorAll('section'),
+      document.location.hash.substring(1)
     )
   }
 

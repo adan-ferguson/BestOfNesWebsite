@@ -50,10 +50,19 @@
     })
   }
 
-  Utils.tabize = function(links, sections){
+  Utils.tabize = function(links, sections, initial = ''){
 
     let currentIndex = -1
-    set(0)
+    let initialIndex = 0
+    if(initial){
+      links.forEach((link, i) => {
+        if(link.id === initial){
+          initialIndex = i
+          return false
+        }
+      })
+    }
+    set(initialIndex)
 
     links.forEach(link => {
       link.addEventListener('click', e => {
