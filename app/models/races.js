@@ -47,6 +47,7 @@ const races = {
     let racesCollection = db.conn().collection('races')
     race._id = db.id(race._id)
     race.lastUpdated = new Date().toISOString()
+    race.date = new Date(race.date).toISOString()
     let result = await racesCollection.save(race)
     return result.result.ok === 1
   },
