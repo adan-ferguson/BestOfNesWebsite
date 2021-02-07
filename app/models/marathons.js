@@ -33,6 +33,12 @@ module.exports = {
       schedule: 'https://horaro.org/bones2018/schedule'
     })
 
+    past.push({
+      name: 'Best of NES 2019',
+      date: 'Nov 8, 2019',
+      schedule: 'https://horaro.org/bones2019/schedule'
+    })
+
     return past
   }
 }
