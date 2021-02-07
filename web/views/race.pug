@@ -32,7 +32,10 @@ block content
                             .startingpoint #{game.startingpoint}
                             .timing #{game.timing}
                             .rules #{game.rules}
-                            .resources !{game.resources}
+                            .resources
+                                each resource in game.resources
+                                    a(href=resource.link) #{resource.text}
+                                    br
                 section.racers
                     if !finished
                         .participants

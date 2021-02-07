@@ -16,20 +16,14 @@
       font-weight: bold
       font-size: 1.2em
 
-    .goal:before
-      content: ''
+    .goal, .timing, .rules
+      margin-bottom: 7px
 
     .startingpoint:not(:empty):before
       content: 'Starting point (after 30s):  '
 
     .timing:not(:empty):before
       content: 'Timing ends when '
-
-    .rules:not(:empty):before
-      content: 'Rules/Clarifications: '
-
-    .resources:not(:empty):before
-      content: 'Resources: '
 
     > div:empty
       display: none

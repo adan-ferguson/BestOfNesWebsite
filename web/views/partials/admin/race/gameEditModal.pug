@@ -21,8 +21,14 @@
                 .form-group
                     label Rules/Clarifications
                     textarea.form-control(data-prop='rules')
-                .form-group
+                .multi-row(data-group='resources')
                     label Resources
-                    textarea.form-control(data-prop='resources')
+                    div.rows
+                        div.form-row
+                            div.col
+                                input.form-control(type='text' placeholder='Text' data-prop='text')
+                            div.col
+                                input.form-control(type='text' placeholder='https://somelink.com' data-prop='link')
+                    button.btn.btn-primary.add-row(type='button') + Add Resource
             .modal-footer
                 button.btn.btn-primary.save(type='button') Save
