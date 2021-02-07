@@ -45,11 +45,16 @@ block content
                                 a(href='http://www.speedrunslive.com/channel/') SpeedRunsLive IRC
                                 |
                                 | and enter the race on the day it happens.
+                            hr
                             .participants-list
                                 each p in race.participants
-                                    a.participant(href=p.streamLink) #{p.username}
+                                    span.participant #{p.username}
+                                        if p.streamLink
+                                            a.stream-link(href=p.streamLink)
+                                                i.fab.fa-twitch
                                         if p.live
                                             i.fa.fa-circle.now-live(title='Now Live')
+                            hr
                             if signedUp
                                 Span You are signed up for this race!
                             else if signupsOpen
@@ -58,20 +63,26 @@ block content
                                     span Sign Up with your Twitch Account
                     else
                         .results
-                            h2 Results
+                            h4 Results
+                            hr
                             .participants-list
                                 each p, i in race.participants
-                                    .participant.clearfix
-                                        span.place #{p.place}
-                                        if p.streamLink
-                                            a.name(href=p.streamLink) #{p.username}
-                                        else
-                                            span.name #{p.username}
+                                    .participant
+                                        span.place #{p.place || '---'}
+                                        span.spacer
+                                        span.name #{p.username}
+                                            if p.streamLink
+                                                a.stream-link(href=p.streamLink)
+                                                    i.fab.fa-twitch
+                                        span.spacer
                                         if p.vod
-                                            a.time.right(href=p.vod) #{p.time || 'VOD'}
+                                            a.time(href=p.vod) #{p.time || 'VOD'}
+                                        else if p.time
+                                            span.time #{p.time}
                                         else
-                                            span.time.right #{p.time}
+                                            span.time ---
                             if race.link
+                                hr
                                 a(href=race.link) View replay of the race
 
 block postscript
