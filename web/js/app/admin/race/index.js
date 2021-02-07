@@ -44,6 +44,7 @@
     new window.Pikaday({
       field: el,
       showTime: true,
+      format: 'YYYY-MM-DDTHH:mm:ss.sssZ',
       toString: date => {
         el.setAttribute('true-value', date)
         return window.moment(date).format('MMMM Do, YYYY h:mma [GMT]Z')
@@ -93,7 +94,7 @@
 
   function troubleshoot(race){
     // ISO format date, use a placeholder date if none provided
-    race.date = new Date(race.date ? race.date : '2020-01-01').toUTCString()
+    race.date = new Date(race.date ? race.date : '2030-01-01').toUTCString()
 
     // Remove whitespace from slug
     race.slug = race.slug.replace(/ /g,'-')

@@ -3,7 +3,7 @@
   const Utils = {}
 
   const DATE_FORMATS = {
-    default: 'MMMM Do, YYYY h:mma [GMT]Z',
+    default: 'dddd MMMM Do, YYYY h:mma [GMT]Z',
     short: 'MMMM Do, YYYY'
   }
 
