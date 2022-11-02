@@ -14,7 +14,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-debounced-watch": "^1.0.4",
     "gulp-inject": "^4.1.0",
-    "gulp-nodemon": "^2.2.1",
+    "gulp-nodemon": "^2.5.0",
     "gulp-rev": "^8.1.1",
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^2.0.0",
